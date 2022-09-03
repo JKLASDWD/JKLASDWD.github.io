@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="Hexo">
+  <link 
+    rel="icon" 
+    href="/img/website_logo.png">
+  <title>数据结构与算法笔记存档</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="数据结构与算法笔记存档">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://gitee.com/d451/d451.git/2022/09/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%AD%98%E6%A1%A3/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/img/author.png">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2022-09-03">
+      <meta 
+        property="og:article:modified_time" 
+        content="2022-09-03">
+      <meta 
+        property="og:article:author" 
+        content="JKLASDWD">
+      
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="/img/website_logo.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">博客</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/img/author.png" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">JKLASDWD</p>
+<p class="author-description">电子农民工，热爱代码</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>3</span>
+    <span>Posts</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>0</span>
+    <span>Categories</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>0</span>
+    <span>Tags</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/5136111">
+          <i class="iconfont icon-bilibili society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198203652348/">
+          <i class="iconfont icon-steam society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>TOC
+</div>
+
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>Categories
+  </div>
+  <div class="categories-list">
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>hot tags
+  </div>
+  <div class="tags-list">
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      数据结构与算法笔记存档
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2022-09-03T12:19:03.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2022-09-03</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>5.5k words</span>
+    
+  </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <p>算法与数据结构</p>
+<img src="E:\Blog\img\表1.png" style="zoom:50%;" / srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="E:\Blog\img\表1.png" class="lozad post-image">
+
+<p>纠正：log2N—Nlog2N</p>
+<pre class="highlight"><span class="line"><span class="type">int</span> <span class="title function_">Max3</span><span class="params">( <span class="type">int</span> A, <span class="type">int</span> B, <span class="type">int</span> C )</span></span><br><span class="line">&#123; <span class="comment">/* 返回3个整数中的最大值 */</span></span><br><span class="line">    <span class="keyword">return</span> A &gt; B ? A &gt; C ? A : C : B &gt; C ? B : C;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">DivideAndConquer</span><span class="params">( <span class="type">int</span> List[], <span class="type">int</span> left, <span class="type">int</span> right )</span></span><br><span class="line">&#123; <span class="comment">/* 分治法求List[left]到List[right]的最大子列和 */</span></span><br><span class="line">    <span class="type">int</span> MaxLeftSum, MaxRightSum; <span class="comment">/* 存放左右子问题的解 */</span></span><br><span class="line">    <span class="type">int</span> MaxLeftBorderSum, MaxRightBorderSum; <span class="comment">/*存放跨分界线的结果*/</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> LeftBorderSum, RightBorderSum;</span><br><span class="line">    <span class="type">int</span> center, i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( left == right )  &#123; <span class="comment">/* 递归的终止条件，子列只有1个数字 */</span></span><br><span class="line">        <span class="keyword">if</span>( List[left] &gt; <span class="number">0</span> )  <span class="keyword">return</span> List[left];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 下面是&quot;分&quot;的过程 */</span></span><br><span class="line">    center = ( left + right ) / <span class="number">2</span>; <span class="comment">/* 找到中分点 */</span></span><br><span class="line">    <span class="comment">/* 递归求得两边子列的最大和 */</span></span><br><span class="line">    MaxLeftSum = DivideAndConquer( List, left, center );</span><br><span class="line">    MaxRightSum = DivideAndConquer( List, center+<span class="number">1</span>, right );</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 下面求跨分界线的最大子列和 */</span></span><br><span class="line">    MaxLeftBorderSum = <span class="number">0</span>; LeftBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>( i=center; i&gt;=left; i-- ) &#123; <span class="comment">/* 从中线向左扫描 */</span></span><br><span class="line">        LeftBorderSum += List[i];</span><br><span class="line">        <span class="keyword">if</span>( LeftBorderSum &gt; MaxLeftBorderSum )</span><br><span class="line">            MaxLeftBorderSum = LeftBorderSum;</span><br><span class="line">    &#125; <span class="comment">/* 左边扫描结束 */</span></span><br><span class="line"></span><br><span class="line">    MaxRightBorderSum = <span class="number">0</span>; RightBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>( i=center+<span class="number">1</span>; i&lt;=right; i++ ) &#123; <span class="comment">/* 从中线向右扫描 */</span></span><br><span class="line">        RightBorderSum += List[i];</span><br><span class="line">        <span class="keyword">if</span>( RightBorderSum &gt; MaxRightBorderSum )</span><br><span class="line">            MaxRightBorderSum = RightBorderSum;</span><br><span class="line">    &#125; <span class="comment">/* 右边扫描结束 */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 下面返回&quot;治&quot;的结果 */</span></span><br><span class="line">    <span class="keyword">return</span> Max3( MaxLeftSum, MaxRightSum, MaxLeftBorderSum + MaxRightBorderSum );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">MaxSubseqSum3</span><span class="params">( <span class="type">int</span> List[], <span class="type">int</span> N )</span></span><br><span class="line">&#123; <span class="comment">/* 保持与前2种算法相同的函数接口 */</span></span><br><span class="line">    <span class="keyword">return</span> DivideAndConquer( List, <span class="number">0</span>, N<span class="number">-1</span> );</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<pre class="highlight"><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">PtrToLNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> &#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    PtrToLNode Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToLNode Position;</span><br><span class="line"><span class="keyword">typedef</span> PtrToLNode List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 查找 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ERROR NULL</span></span><br><span class="line"></span><br><span class="line">Position <span class="title function_">Find</span><span class="params">( List L, ElementType X )</span></span><br><span class="line">&#123;</span><br><span class="line">    Position p = L; <span class="comment">/* p指向L的第1个结点 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ( p &amp;&amp; p-&gt;Data!=X )</span><br><span class="line">        p = p-&gt;Next;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 下列语句可以用 return p; 替换 */</span></span><br><span class="line">    <span class="keyword">if</span> ( p )</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 带头结点的插入 */</span></span><br><span class="line"><span class="comment">/*注意:在插入位置参数P上与课程视频有所不同，课程视频中i是序列位序（从1开始），这里P是链表结点指针，在P之前插入新结点 */</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">Insert</span><span class="params">( List L, ElementType X, Position P )</span></span><br><span class="line">&#123; <span class="comment">/* 这里默认L有头结点 */</span></span><br><span class="line">    Position tmp, pre;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 查找P的前一个结点 */</span>        </span><br><span class="line">    <span class="keyword">for</span> ( pre=L; pre&amp;&amp;pre-&gt;Next!=P; pre=pre-&gt;Next ) ;            </span><br><span class="line">    <span class="keyword">if</span> ( pre==<span class="literal">NULL</span> ) &#123; <span class="comment">/* P所指的结点不在L中 */</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;插入位置参数错误\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123; <span class="comment">/* 找到了P的前一个结点pre */</span></span><br><span class="line">        <span class="comment">/* 在P前插入新结点 */</span></span><br><span class="line">        tmp = (Position)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> LNode)); <span class="comment">/* 申请、填装结点 */</span></span><br><span class="line">        tmp-&gt;Data = X; </span><br><span class="line">        tmp-&gt;Next = P;</span><br><span class="line">        pre-&gt;Next = tmp;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 带头结点的删除 */</span></span><br><span class="line"><span class="comment">/*注意:在删除位置参数P上与课程视频有所不同，课程视频中i是序列位序（从1开始），这里P是拟删除结点指针 */</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">Delete</span><span class="params">( List L, Position P )</span></span><br><span class="line">&#123; <span class="comment">/* 这里默认L有头结点 */</span></span><br><span class="line">    Position pre;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 查找P的前一个结点 */</span>        </span><br><span class="line">    <span class="keyword">for</span> ( pre=L; pre&amp;&amp;pre-&gt;Next!=P; pre=pre-&gt;Next ) ;            </span><br><span class="line">    <span class="keyword">if</span> ( pre==<span class="literal">NULL</span> || P==<span class="literal">NULL</span>) &#123; <span class="comment">/* P所指的结点不在L中 */</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;删除位置参数错误\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123; <span class="comment">/* 找到了P的前一个结点pre */</span></span><br><span class="line">        <span class="comment">/* 将P位置的结点删除 */</span></span><br><span class="line">        pre-&gt;Next = P-&gt;Next;</span><br><span class="line">        <span class="built_in">free</span>(P);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>![](E:\Blog\img\屏幕截图 2022-07-26 180805.png)</p>
+<p>树的同构判别</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX 100</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  NULL -1<span class="comment">//这里的空为-1，因为数组的下标为0也是有效区域</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> data;</span><br><span class="line">	<span class="type">int</span> lchild;</span><br><span class="line">	<span class="type">int</span> rchild;</span><br><span class="line">&#125;Tree1[MAX], Tree2[MAX];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Create</span><span class="params">(<span class="keyword">struct</span> node tree[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i,n,root=<span class="literal">NULL</span>;<span class="comment">//这里一定要赋值为-1,因为树可能为空</span></span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	<span class="type">int</span> *chick = <span class="keyword">new</span> <span class="type">int</span>[n + <span class="number">1</span>];</span><br><span class="line">	<span class="built_in">fill</span>(chick, chick + n, <span class="number">0</span>);</span><br><span class="line">	<span class="type">char</span> c,ch1,ch2;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; c &gt;&gt; ch1&gt;&gt;ch2;</span><br><span class="line">		tree[i].data = c;</span><br><span class="line">		<span class="keyword">if</span> (ch1 == <span class="string">&#x27;-&#x27;</span>)		tree[i].lchild = <span class="literal">NULL</span>;<span class="comment">//如果遇到 - ，则赋值为空，这里为-1</span></span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			tree[i].lchild = ch1 - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">			chick[tree[i].lchild] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (ch2 == <span class="string">&#x27;-&#x27;</span>)		tree[i].rchild = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			tree[i].rchild = ch2 - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">			chick[tree[i].rchild] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (!chick[i])</span><br><span class="line">		&#123;</span><br><span class="line">			root = i;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">delete</span>[] chick;</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isomorphis</span><span class="params">( <span class="type">int</span> r1, <span class="type">int</span> r2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (r1 == <span class="literal">NULL</span> &amp;&amp; r2 == <span class="literal">NULL</span>)	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span> ((r1 == <span class="literal">NULL</span> &amp;&amp; r2 != <span class="literal">NULL</span>) || (r1 != <span class="literal">NULL</span> &amp;&amp; r2 == <span class="literal">NULL</span>)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span> (Tree1[r1].data != Tree2[r2].data) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span>( Tree1[r1].lchild == <span class="literal">NULL</span> &amp;&amp; Tree2[r2].lchild == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">isomorphis</span>(Tree1[r1].lchild,Tree2[r2].lchild)&amp;&amp;</span><br><span class="line">		<span class="built_in">isomorphis</span>(Tree1[r1].rchild, Tree2[r2].rchild);</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span>(Tree1[Tree1[r1].lchild].data == Tree2[Tree2[r2].lchild].data )</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">isomorphis</span>(Tree1[r1].rchild, Tree2[r2].rchild);</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">isomorphis</span>(Tree1[r1].lchild, Tree2[r2].rchild) &amp;&amp; <span class="built_in">isomorphis</span>(Tree1[r1].rchild, Tree2[r2].lchild);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> r1 = <span class="built_in">Create</span>(Tree1);</span><br><span class="line">	<span class="type">int</span> r2 = <span class="built_in">Create</span>(Tree2);</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">isomorphis</span>(r1, r2)) cout &lt;&lt; <span class="string">&quot;Yes&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;No&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>AVL树的构建与旋转</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span>* <span class="title">Position</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> Position AVLTree; <span class="comment">/* AVL树类型 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AVLNode</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> Data; <span class="comment">/* 结点数据 */</span></span><br><span class="line">    AVLTree Left;     <span class="comment">/* 指向左子树 */</span></span><br><span class="line">    AVLTree Right;    <span class="comment">/* 指向右子树 */</span></span><br><span class="line">    <span class="type">int</span> Height;       <span class="comment">/* 树高 */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">Max</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">GetHeight</span><span class="params">(AVLTree T)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (T) &#123;</span><br><span class="line">        <span class="keyword">return</span> T-&gt;Height;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;   <span class="comment">/* 写成-1或者其他小于0的数也可以，空指针进入旋转判断不会出来True */</span></span><br><span class="line">&#125;</span><br><span class="line">AVLTree <span class="title function_">SingleLeftRotation</span><span class="params">(AVLTree A)</span></span><br><span class="line">&#123; <span class="comment">/* 注意：A必须有一个左子结点B */</span></span><br><span class="line">  <span class="comment">/* 将A与B做左单旋，更新A与B的高度，返回新的根结点B */</span></span><br><span class="line"></span><br><span class="line">    AVLTree B = A-&gt;Left;</span><br><span class="line">    A-&gt;Left = B-&gt;Right;</span><br><span class="line">    B-&gt;Right = A;</span><br><span class="line">    A-&gt;Height = Max(GetHeight(A-&gt;Left), GetHeight(A-&gt;Right)) + <span class="number">1</span>;</span><br><span class="line">    B-&gt;Height = Max(GetHeight(B-&gt;Left), A-&gt;Height) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">AVLTree <span class="title function_">SingleRightRotation</span><span class="params">(AVLTree A)</span></span><br><span class="line">&#123;</span><br><span class="line">    AVLTree B = A-&gt;Right;</span><br><span class="line">    A-&gt;Right = B-&gt;Left;</span><br><span class="line">    B-&gt;Left = A;</span><br><span class="line">    A-&gt;Height = Max(GetHeight(A-&gt;Left), GetHeight(A-&gt;Right)) + <span class="number">1</span>;</span><br><span class="line">    B-&gt;Height = Max(GetHeight(B-&gt;Right), A-&gt;Height) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">AVLTree <span class="title function_">DoubleLeftRightRotation</span><span class="params">(AVLTree A)</span></span><br><span class="line">&#123; <span class="comment">/* 注意：A必须有一个左子结点B，且B必须有一个右子结点C */</span></span><br><span class="line">  <span class="comment">/* 将A、B与C做两次单旋，返回新的根结点C */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 将B与C做右单旋，C被返回 */</span></span><br><span class="line">    A-&gt;Left = SingleRightRotation(A-&gt;Left);</span><br><span class="line">    <span class="comment">/* 将A与C做左单旋，C被返回 */</span></span><br><span class="line">    <span class="keyword">return</span> SingleLeftRotation(A);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">AVLTree <span class="title function_">DoubleRightLeftRotation</span><span class="params">(AVLTree A)</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 将B与C做左单旋，C被返回 */</span></span><br><span class="line">    A-&gt;Right = SingleLeftRotation(A-&gt;Right);</span><br><span class="line">    <span class="comment">/* 将A与C做右单旋，C被返回 */</span></span><br><span class="line">    <span class="keyword">return</span> SingleRightRotation(A);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">AVLTree <span class="title function_">Insert</span><span class="params">(AVLTree T, <span class="type">int</span> X)</span></span><br><span class="line">&#123; <span class="comment">/* 将X插入AVL树T中，并且返回调整后的AVL树 */</span></span><br><span class="line">    <span class="keyword">if</span> (!T) &#123; <span class="comment">/* 若插入空树，则新建包含一个结点的树 */</span></span><br><span class="line">        T = (AVLTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> AVLNode));</span><br><span class="line">        T-&gt;Data = X;</span><br><span class="line">        T-&gt;Height = <span class="number">0</span>;</span><br><span class="line">        T-&gt;Left = T-&gt;Right = <span class="literal">NULL</span>;</span><br><span class="line">    &#125; <span class="comment">/* if (插入空树) 结束 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (X &lt; T-&gt;Data) &#123;</span><br><span class="line">        <span class="comment">/* 插入T的左子树 */</span></span><br><span class="line">        T-&gt;Left = Insert(T-&gt;Left, X);</span><br><span class="line">        <span class="comment">/* 如果需要左旋 */</span></span><br><span class="line">        <span class="keyword">if</span> (GetHeight(T-&gt;Left) - GetHeight(T-&gt;Right) == <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (X &lt; T-&gt;Left-&gt;Data)</span><br><span class="line">                T = SingleLeftRotation(T);      <span class="comment">/* 左单旋 */</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                T = DoubleLeftRightRotation(T); <span class="comment">/* 左-右双旋 */</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="comment">/* else if (插入左子树) 结束 */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (X &gt; T-&gt;Data) &#123;</span><br><span class="line">        <span class="comment">/* 插入T的右子树 */</span></span><br><span class="line">        T-&gt;Right = Insert(T-&gt;Right, X);</span><br><span class="line">        <span class="comment">/* 如果需要右旋 */</span></span><br><span class="line">        <span class="keyword">if</span> (GetHeight(T-&gt;Left) - GetHeight(T-&gt;Right) == <span class="number">-2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (X &gt; T-&gt;Right-&gt;Data)</span><br><span class="line">                T = SingleRightRotation(T);     <span class="comment">/* 右单旋 */</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                T = DoubleRightLeftRotation(T); <span class="comment">/* 右-左双旋 */</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="comment">/* else if (插入右子树) 结束 */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* else X == T-&gt;Data，无须插入 */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 别忘了更新树高 */</span></span><br><span class="line">    T-&gt;Height = Max(GetHeight(T-&gt;Left), GetHeight(T-&gt;Right)) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>堆的建立，插入，删除</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> Elemtype int</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXDATA 1000  <span class="comment">/* 该值应根据具体情况定义为大于堆中所有可能元素的值 */</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">HNode</span> &#123;</span><br><span class="line">	Elemtype *Data; <span class="comment">/* 存储元素的数组 */</span></span><br><span class="line">	<span class="type">int</span> Size;          <span class="comment">/* 堆中当前元素个数 */</span></span><br><span class="line">	<span class="type">int</span> Capacity;      <span class="comment">/* 堆的最大容量 */</span></span><br><span class="line">&#125;*Heap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> Heap MaxHeap; <span class="comment">/* 最大堆 */</span></span><br><span class="line"><span class="keyword">typedef</span> Heap MinHeap; <span class="comment">/* 最小堆 */</span></span><br><span class="line"></span><br><span class="line"><span class="function">MaxHeap <span class="title">CreateHeap</span><span class="params">(<span class="type">int</span> MaxSize)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 创建容量为MaxSize的空的最大堆 */</span></span><br><span class="line"></span><br><span class="line">	MaxHeap H = (MaxHeap)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> HNode));</span><br><span class="line">	H-&gt;Data = (Elemtype *)<span class="built_in">malloc</span>((MaxSize + <span class="number">1</span>)*<span class="built_in">sizeof</span>(Elemtype));</span><br><span class="line">	H-&gt;Size = <span class="number">0</span>;</span><br><span class="line">	H-&gt;Capacity = MaxSize;</span><br><span class="line">	H-&gt;Data[<span class="number">0</span>] = MAXDATA; <span class="comment">/* 定义&quot;哨兵&quot;为大于堆中所有可能元素的值*/</span></span><br><span class="line">	<span class="keyword">return</span> H;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">IsFull</span><span class="params">(MaxHeap H)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (H-&gt;Size == H-&gt;Capacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">Insert</span><span class="params">(MaxHeap H, Elemtype X)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 将元素X插入最大堆H，其中H-&gt;Data[0]已经定义为哨兵 */</span></span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">IsFull</span>(H))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;最大堆已满&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	i = ++H-&gt;Size; <span class="comment">/* i指向插入后堆中的最后一个元素的位置 */</span></span><br><span class="line">	<span class="keyword">for</span> (; H-&gt;Data[i / <span class="number">2</span>] &lt; X; i /= <span class="number">2</span>)</span><br><span class="line">		H-&gt;Data[i] = H-&gt;Data[i / <span class="number">2</span>]; <span class="comment">/* 上滤X */</span></span><br><span class="line">	H-&gt;Data[i] = X; <span class="comment">/* 将X插入 */</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ERROR -1 <span class="comment">/* 错误标识应根据具体情况定义为堆中不可能出现的元素值 */</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">IsEmpty</span><span class="params">(MaxHeap H)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (H-&gt;Size == <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Elemtype <span class="title">DeleteMax</span><span class="params">(MaxHeap H)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 从最大堆H中取出键值为最大的元素，并删除一个结点 */</span></span><br><span class="line">	<span class="type">int</span> Parent, Child;</span><br><span class="line">	Elemtype MaxItem, X;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">IsEmpty</span>(H)) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;最大堆已为空&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	MaxItem = H-&gt;Data[<span class="number">1</span>]; <span class="comment">/* 取出根结点存放的最大值 */</span></span><br><span class="line">	<span class="comment">/* 用最大堆中最后一个元素从根结点开始向上过滤下层结点 */</span></span><br><span class="line">	X = H-&gt;Data[H-&gt;Size--]; <span class="comment">/* 注意当前堆的规模要减小 */</span></span><br><span class="line">	<span class="keyword">for</span> (Parent = <span class="number">1</span>; Parent * <span class="number">2</span> &lt;= H-&gt;Size; Parent = Child)</span><br><span class="line">	&#123;</span><br><span class="line">		Child = Parent * <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> ((Child != H-&gt;Size) &amp;&amp; (H-&gt;Data[Child]&lt;H-&gt;Data[Child + <span class="number">1</span>]))</span><br><span class="line">			Child++;  <span class="comment">/* Child指向左右子结点的较大者 */</span></span><br><span class="line">		<span class="keyword">if</span> (X &gt;= H-&gt;Data[Child]) <span class="keyword">break</span>; <span class="comment">/* 找到了合适位置 */</span></span><br><span class="line">		<span class="keyword">else</span>  <span class="comment">/* 下滤X */</span></span><br><span class="line">			H-&gt;Data[Parent] = H-&gt;Data[Child];</span><br><span class="line">	&#125;</span><br><span class="line">	H-&gt;Data[Parent] = X;</span><br><span class="line">	<span class="keyword">return</span> MaxItem;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*----------- 建造最大堆 -----------*/</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">PercDown</span><span class="params">(MaxHeap H, <span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 下滤：将H中以H-&gt;Data[p]为根的子堆调整为最大堆 */</span></span><br><span class="line">	<span class="type">int</span> Parent, Child;</span><br><span class="line">	Elemtype X;</span><br><span class="line"></span><br><span class="line">	X = H-&gt;Data[p]; <span class="comment">/* 取出根结点存放的值 */</span></span><br><span class="line">	<span class="keyword">for</span> (Parent = p; Parent * <span class="number">2</span> &lt;= H-&gt;Size; Parent = Child) &#123;</span><br><span class="line">		Child = Parent * <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> ((Child != H-&gt;Size) &amp;&amp; (H-&gt;Data[Child]&lt;H-&gt;Data[Child + <span class="number">1</span>]))</span><br><span class="line">			Child++;  <span class="comment">/* Child指向左右子结点的较大者 */</span></span><br><span class="line">		<span class="keyword">if</span> (X &gt;= H-&gt;Data[Child]) <span class="keyword">break</span>; <span class="comment">/* 找到了合适位置 */</span></span><br><span class="line">		<span class="keyword">else</span>  <span class="comment">/* 下滤X */</span></span><br><span class="line">			H-&gt;Data[Parent] = H-&gt;Data[Child];</span><br><span class="line">	&#125;</span><br><span class="line">	H-&gt;Data[Parent] = X;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">BuildHeap</span><span class="params">(MaxHeap H)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 调整H-&gt;Data[]中的元素，使满足最大堆的有序性  */</span></span><br><span class="line">	<span class="comment">/* 这里假设所有H-&gt;Size个元素已经存在H-&gt;Data[]中 */</span></span><br><span class="line">	<span class="type">int</span> i;</span><br><span class="line">	<span class="comment">/* 从最后一个结点的父节点开始，到根结点1 */</span></span><br><span class="line">	<span class="keyword">for</span> (i = H-&gt;Size / <span class="number">2</span>; i&gt;<span class="number">0</span>; i--)</span><br><span class="line">		<span class="built_in">PercDown</span>(H, i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Heap heap = <span class="built_in">CreateHeap</span>(<span class="number">20</span>);</span><br><span class="line">	<span class="type">int</span> a[<span class="number">13</span>] = &#123; MAXDATA, <span class="number">79</span>, <span class="number">66</span>, <span class="number">43</span>, <span class="number">83</span>, <span class="number">30</span>, <span class="number">87</span>, <span class="number">38</span>, <span class="number">55</span>, <span class="number">91</span>, <span class="number">72</span>, <span class="number">49</span>, <span class="number">9</span> &#125;;</span><br><span class="line">	<span class="type">int</span> len = <span class="built_in">sizeof</span>(a) / <span class="built_in">sizeof</span>(a[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">	heap-&gt;Data = a;</span><br><span class="line">	heap-&gt;Size = len<span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">BuildHeap</span>(heap);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= heap-&gt;Size; i++)</span><br><span class="line">		cout &lt;&lt; heap-&gt;Data[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	cout &lt;&lt; endl &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	cout &lt;&lt; <span class="built_in">DeleteMax</span>(heap) &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= heap-&gt;Size; i++)</span><br><span class="line">		cout &lt;&lt; heap-&gt;Data[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	cout &lt;&lt; endl &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">Insert</span>(heap, <span class="number">99</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= heap-&gt;Size; i++)</span><br><span class="line">			cout &lt;&lt; heap-&gt;Data[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre>
+
+
+
+<p>集合</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 1000                  <span class="comment">/* 集合最大元素个数 */</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> ElementType;           <span class="comment">/* 默认元素可以用非负整数表示 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> SetName;               <span class="comment">/* 默认用根结点的下标作为集合名称 */</span></span><br><span class="line"><span class="keyword">typedef</span> ElementType SetType[MAXN]; <span class="comment">/* 假设集合元素下标从0开始 */</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Union</span><span class="params">( SetType S, SetName Root1, SetName Root2 )</span></span><br><span class="line">&#123; <span class="comment">/* 这里默认Root1和Root2是不同集合的根结点 */</span></span><br><span class="line">    <span class="comment">/* 保证小集合并入大集合 */</span></span><br><span class="line">    <span class="keyword">if</span> ( S[Root2] &lt; S[Root1] ) &#123; <span class="comment">/* 如果集合2比较大 */</span></span><br><span class="line">        S[Root2] += S[Root1];     <span class="comment">/* 集合1并入集合2  */</span></span><br><span class="line">        S[Root1] = Root2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;                         <span class="comment">/* 如果集合1比较大 */</span></span><br><span class="line">        S[Root1] += S[Root2];     <span class="comment">/* 集合2并入集合1  */</span></span><br><span class="line">        S[Root2] = Root1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SetName <span class="title function_">Find</span><span class="params">( SetType S, ElementType X )</span></span><br><span class="line">&#123; <span class="comment">/* 默认集合元素全部初始化为-1 */</span></span><br><span class="line">    <span class="keyword">if</span> ( S[X] &lt; <span class="number">0</span> ) <span class="comment">/* 找到集合的根 */</span></span><br><span class="line">        <span class="keyword">return</span> X;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> S[X] = Find( S, S[X] ); <span class="comment">/* 路径压缩 */</span></span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>007 save (评测不全通过)</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> Jump_Dis;</span><br><span class="line"><span class="type">int</span> num;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 101</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Crocodiles</span>&#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">int</span> y;</span><br><span class="line">    <span class="type">int</span> Visited;</span><br><span class="line">&#125;P[MAXSIZE];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Judge</span><span class="params">(<span class="type">int</span> location_x,<span class="type">int</span> location_y, <span class="keyword">struct</span> Crocodiles P1)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> res = <span class="built_in">abs</span>(location_x-P1.x)*<span class="built_in">abs</span>(location_x-P1.x)+<span class="built_in">abs</span>(location_y-P1.y)*<span class="built_in">abs</span>(location_y-P1.y);  <span class="comment">// 使用 sqrt和pow函数会导致另外两个评测通过，蛮整蛊的</span></span><br><span class="line">    <span class="keyword">if</span> (Jump_Dis*Jump_Dis &gt;= res)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Out</span><span class="params">(<span class="keyword">struct</span> Crocodiles P1)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">abs</span>(P1.x) + Jump_Dis &gt;=<span class="number">50</span> || <span class="built_in">abs</span>(P1.y) + Jump_Dis &gt;=<span class="number">50</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Jump_DFS</span><span class="params">(<span class="keyword">struct</span> Crocodiles *P1)</span></span>&#123;</span><br><span class="line">    P1-&gt;Visited=<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">Out</span>(*P1))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">     &#123;</span><br><span class="line">       <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=num;i++)</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="keyword">if</span>(P[i].Visited == <span class="number">0</span> &amp;&amp; <span class="built_in">Judge</span>(P1-&gt;x,P1-&gt;y,P[i]))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">Jump_DFS</span>(&amp;P[i]);</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d\n&quot;</span>,&amp;num,&amp;Jump_Dis);</span><br><span class="line">    P[<span class="number">0</span>].x=<span class="number">0</span>,P[<span class="number">0</span>].y=<span class="number">0</span>,P[<span class="number">0</span>].Visited=<span class="number">0</span>;</span><br><span class="line">    P[num+<span class="number">1</span>].x=<span class="number">0</span>,P[num+<span class="number">1</span>].y=<span class="number">0</span>,P[num+<span class="number">1</span>].Visited=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;num+<span class="number">1</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d %d\n&quot;</span>,&amp;P[i].x,&amp;P[i].y);</span><br><span class="line">        P[i].Visited=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Jump_DFS</span>(&amp;P[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>未完工</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 1000</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Adjlist</span>&#123;</span><br><span class="line">    <span class="type">int</span> Vertex;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span> * Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">GNode</span>&#123;</span><br><span class="line">    <span class="type">int</span> NumVertex;</span><br><span class="line">    <span class="type">int</span> NumEdge;</span><br><span class="line">    AdjList G[MAXSIZE];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">GNode</span> * <span class="built_in">CreateAdjGraph</span>(<span class="type">int</span> NVertex)&#123;</span><br><span class="line">    <span class="type">int</span> V,W;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">GNode</span> * AdjGraph;</span><br><span class="line">    AdjGraph = (<span class="keyword">struct</span> Gnode *)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> GNode));</span><br><span class="line">    AdjGraph-&gt;NumVertex = NVertex;</span><br><span class="line">    AdjGraph-&gt;NumEdge = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;NVertex;i++)&#123;</span><br><span class="line">        AdjGraph-&gt;G[i].Next=<span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> AdjGraph;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">InsertEdge</span><span class="params">(<span class="keyword">struct</span> GNode * AdjG,<span class="type">int</span> V1,<span class="type">int</span> V2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span> * NewNodeV1 = (<span class="keyword">struct</span> Adjlist *)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Adjlist));</span><br><span class="line">    NewNodeV1-&gt;Next=AdjG-&gt;G[V1].Next;</span><br><span class="line">    AdjG-&gt;G[V1].Next=NewNodeV1;</span><br><span class="line">    NewNodeV1-&gt;Vertex=V2;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span> * NewNodeV2 = (<span class="keyword">struct</span> Adjlist *)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Adjlist));</span><br><span class="line">    NewNodeV2-&gt;Next=AdjG-&gt;G[V2].Next;</span><br><span class="line">    AdjG-&gt;G[V2].Next=NewNodeV2;</span><br><span class="line">    NewNodeV2-&gt;Vertex=V1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">GraphBFS</span><span class="params">(<span class="keyword">struct</span> GNode * AdjG)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> NV;</span><br><span class="line">    <span class="type">int</span> NE;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> V1,V2;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d\n&quot;</span>,&amp;NV,&amp;NE);</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">GNode</span> * AdjG = <span class="built_in">CreateAdjGraph</span>(NV);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;NE;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d %d\n&quot;</span>,&amp;V1,&amp;V2);</span><br><span class="line">        <span class="built_in">InsertEdge</span>(AdjG,V1,V2);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+
+
+
+<p>已通过验证</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 1001</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Adjlist</span> &#123;</span><br><span class="line">    <span class="type">int</span> Vertex;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">GNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> NumVertex;</span><br><span class="line">    <span class="type">int</span> NumEdge;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span> G[MAXSIZE];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">GNode</span>* <span class="built_in">CreateAdjGraph</span>(<span class="type">int</span> NVertex) &#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">GNode</span>* AdjGraph;</span><br><span class="line">    AdjGraph = (<span class="keyword">struct</span> GNode *)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> GNode));</span><br><span class="line">    AdjGraph-&gt;NumVertex = NVertex;</span><br><span class="line">    AdjGraph-&gt;NumEdge = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;=NVertex; i++) &#123;</span><br><span class="line">        AdjGraph-&gt;G[i].Next = <span class="literal">NULL</span>;</span><br><span class="line">        AdjGraph-&gt;G[i].Vertex = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> AdjGraph;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">InsertEdge</span><span class="params">(<span class="keyword">struct</span> GNode* AdjG, <span class="type">int</span> V1, <span class="type">int</span> V2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* NewNodeV1 = (<span class="keyword">struct</span> Adjlist*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Adjlist));</span><br><span class="line">    NewNodeV1-&gt;Next = AdjG-&gt;G[V1].Next;</span><br><span class="line">    AdjG-&gt;G[V1].Next = NewNodeV1;</span><br><span class="line">    NewNodeV1-&gt;Vertex = V2;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* NewNodeV2 = (<span class="keyword">struct</span> Adjlist*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Adjlist));</span><br><span class="line">    NewNodeV2-&gt;Next = AdjG-&gt;G[V2].Next;</span><br><span class="line">    AdjG-&gt;G[V2].Next = NewNodeV2;</span><br><span class="line">    NewNodeV2-&gt;Vertex = V1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">GraphBFS</span><span class="params">(<span class="keyword">struct</span> GNode* AdjG, <span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> count = <span class="number">1</span>, level = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> j, k;</span><br><span class="line">    <span class="type">int</span> last, tail;</span><br><span class="line">    <span class="type">int</span> Visited[MAXSIZE] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    Visited[i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* Net;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span> queue[MAXSIZE] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    queue[<span class="number">0</span>] = AdjG-&gt;G[i];</span><br><span class="line">    k = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    last = queue[<span class="number">0</span>].Vertex;</span><br><span class="line">    <span class="keyword">while</span> (queue[k].Vertex != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Net = AdjG-&gt;G[queue[k].Vertex].Next;   <span class="comment">//传入地址，即首地址</span></span><br><span class="line">        <span class="keyword">while</span> (Net)                           <span class="comment">//所以PPT上有一个FirstEdge，就是存首地址的..</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!Visited[Net-&gt;Vertex])   <span class="comment">//内部一条链遍历，Net.Next是下一个链点的地址</span></span><br><span class="line">            &#123;                           <span class="comment">//不能使用G数组中的首地址</span></span><br><span class="line">                <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* tmp = Net;</span><br><span class="line">                j++;                </span><br><span class="line">                queue[j] = *tmp;</span><br><span class="line">                Visited[queue[j].Vertex] = <span class="number">1</span>;</span><br><span class="line">                tail = queue[j].Vertex;</span><br><span class="line">                Net = queue[j].Next;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                Net = Net-&gt;Next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (queue[k].Vertex == last) &#123;</span><br><span class="line">            level++;</span><br><span class="line">            last = tail;</span><br><span class="line">        &#125;</span><br><span class="line">        k++;</span><br><span class="line">        <span class="keyword">if</span> (level == <span class="number">6</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> NV;</span><br><span class="line">    <span class="type">int</span> NE;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> V1, V2;</span><br><span class="line">    <span class="type">int</span> count;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d\n&quot;</span>, &amp;NV, &amp;NE);</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">GNode</span>* AdjG = <span class="built_in">CreateAdjGraph</span>(NV);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; NE; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d %d\n&quot;</span>, &amp;V1, &amp;V2);</span><br><span class="line">        <span class="built_in">InsertEdge</span>(AdjG, V1, V2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= NV; i++) &#123;</span><br><span class="line">        count = <span class="built_in">GraphBFS</span>(AdjG, i);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d: %.2f%%\n&quot;</span>, i, (<span class="type">double</span>)<span class="number">100</span> * count / NV);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre>
+
+
+
+<p>创建邻接表</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> maxvex 4</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//边表结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">edgenode</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> adjvex;  <span class="comment">//下标</span></span><br><span class="line">	<span class="type">int</span> weight;      <span class="comment">//权值，可有可没有      </span></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">edgenode</span> *next;</span><br><span class="line">&#125;EdgeNode;</span><br><span class="line"><span class="comment">//顶点结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> data;</span><br><span class="line">	EdgeNode *first;  <span class="comment">//边表头指针</span></span><br><span class="line">&#125;VertexNode,AdjList[maxvex];</span><br><span class="line"><span class="comment">//二次封装</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> </span><br><span class="line">&#123;</span><br><span class="line">	AdjList adjlist;</span><br><span class="line">	<span class="type">int</span> numetex, numedge;</span><br><span class="line">&#125;GraAdjList;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//创建邻接表</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">CreateAlGraph</span><span class="params">(GraAdjList &amp;g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> m, n;</span><br><span class="line">	EdgeNode *e=<span class="literal">NULL</span>;</span><br><span class="line">	EdgeNode *q = <span class="literal">NULL</span>;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;请输入顶点数和边数:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	cin &gt;&gt; g.numetex &gt;&gt; g.numedge;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;请输入顶点的信息：&quot;</span> &lt;&lt; endl;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//获取顶点的信息</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>;i &lt; g.numetex;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; g.adjlist[i].data;</span><br><span class="line">		g.adjlist[i].first = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//建立边表，链表采用头插法</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">0</span>;k&lt;g.numedge;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;请输入边（Vi,Vj）的顶点下标：&quot;</span> &lt;&lt; endl;</span><br><span class="line">		cin &gt;&gt; m &gt;&gt; n;</span><br><span class="line">		<span class="comment">//链表结点</span></span><br><span class="line">		e = (EdgeNode *)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(EdgeNode));</span><br><span class="line">		e-&gt;adjvex = n;</span><br><span class="line">		e-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="comment">//头插法建链</span></span><br><span class="line">		<span class="keyword">if</span> (g.adjlist[m].first == <span class="literal">NULL</span>)</span><br><span class="line">			q=g.adjlist[m].first = e ;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			q = q-&gt;next = e;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">const</span> GraAdjList &amp;g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	EdgeNode *p;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>;k &lt; g.numetex;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;顶点&quot;</span> &lt;&lt; k &lt;&lt; <span class="string">&quot;: &quot;</span>;</span><br><span class="line">		<span class="keyword">for</span> (p = g.adjlist[k].first; p;p = p-&gt;next)</span><br><span class="line">			cout &lt;&lt; p-&gt;adjvex &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">			cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	GraAdjList gralist;</span><br><span class="line">	<span class="built_in">CreateAlGraph</span>(gralist);</span><br><span class="line">	<span class="built_in">print</span>(gralist);</span><br><span class="line">&#125;</span><br></pre>
+
+<p>队列的实现</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;assert.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> DataType;</span><br><span class="line"><span class="comment">//定义队列</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">QueueNode</span></span><br><span class="line">&#123;</span><br><span class="line">	DataType data;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">QueueNode</span>* next;</span><br><span class="line">&#125;QNode;</span><br><span class="line"><span class="comment">//设置头尾指针</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">PQueue</span></span><br><span class="line">&#123;</span><br><span class="line">	QNode* head;</span><br><span class="line">	QNode* tail;</span><br><span class="line">&#125;PQueue;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">QueueInit</span><span class="params">(PQueue* pq)</span></span>;</span><br><span class="line"><span class="comment">//删除队列</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">QueueDestroy</span><span class="params">(PQueue* pq)</span></span>;</span><br><span class="line"><span class="comment">//尾插</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">QueuePush</span><span class="params">(PQueue* pq, DataType data)</span></span>;</span><br><span class="line"><span class="comment">//头删</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">QueuePop</span><span class="params">(PQueue* pq)</span></span>;</span><br><span class="line"><span class="comment">//头结点</span></span><br><span class="line"><span class="function">DataType <span class="title">QueueFront</span><span class="params">(PQueue* pq)</span></span>;</span><br><span class="line"><span class="comment">//尾节点</span></span><br><span class="line"><span class="function">DataType <span class="title">QueueBack</span><span class="params">(PQueue* pq)</span></span>;</span><br><span class="line"><span class="comment">//判读队空</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">QueueEmpty</span><span class="params">(PQueue* pq)</span></span>;</span><br><span class="line"><span class="comment">//打印队列</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">PrintQueue</span><span class="params">(PQueue* pq)</span></span>;</span><br></pre>
+
+
+
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&quot;Queue.h&quot;</span></span></span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">QueueInit</span><span class="params">(PQueue* pq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	pq-&gt;head = <span class="literal">NULL</span>;</span><br><span class="line">	pq-&gt;tail = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除队列</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">QueueDestroy</span><span class="params">(PQueue* pq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	QNode* p = pq-&gt;head;</span><br><span class="line">	<span class="keyword">while</span> (p!= <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		QNode* tem = p-&gt;next;</span><br><span class="line">		<span class="built_in">free</span>(p);</span><br><span class="line">		p = tem;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//尾插</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">QueuePush</span><span class="params">(PQueue* pq, DataType data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//确保队列初始化成功</span></span><br><span class="line">	<span class="built_in">assert</span>(pq);</span><br><span class="line">	QNode* tem = (QNode*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(QNode));</span><br><span class="line">	tem-&gt;data = data;</span><br><span class="line">	<span class="keyword">if</span> (pq-&gt;head == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		pq-&gt;head = pq-&gt;tail = tem;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		pq-&gt;tail-&gt;next = tem;</span><br><span class="line">		pq-&gt;tail = tem;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//头删</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">QueuePop</span><span class="params">(PQueue* pq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//确保队列不为空</span></span><br><span class="line">	<span class="built_in">assert</span>(pq);</span><br><span class="line">	QNode* tem = pq-&gt;head-&gt;next;</span><br><span class="line">	<span class="built_in">free</span>(pq-&gt;head);</span><br><span class="line">	pq-&gt;head = tem;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//头结点</span></span><br><span class="line"><span class="function">DataType <span class="title">QueueFront</span><span class="params">(PQueue* pq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">bool</span> ret = <span class="built_in">QueueEmpty</span>(pq);</span><br><span class="line">	<span class="keyword">if</span> (ret)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;队列为空！\n&quot;</span>);</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> pq-&gt;head-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//尾节点</span></span><br><span class="line"><span class="function">DataType <span class="title">QueueBack</span><span class="params">(PQueue* pq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">bool</span> ret = <span class="built_in">QueueEmpty</span>(pq);</span><br><span class="line">	<span class="keyword">if</span> (ret)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;队列为空！\n&quot;</span>);</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> pq-&gt;tail-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//判读队空</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">QueueEmpty</span><span class="params">(PQueue* pq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (pq-&gt;head == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//打印队列</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">PrintQueue</span><span class="params">(PQueue* pq)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">bool</span> ret = <span class="built_in">QueueEmpty</span>(pq);</span><br><span class="line">	<span class="keyword">if</span> (ret)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;队列为空！\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	QNode* tem = pq-&gt;head;</span><br><span class="line">	<span class="keyword">while</span> (tem != pq-&gt;tail-&gt;next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, tem-&gt;data);</span><br><span class="line">		tem = tem-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">1</span></span><br></pre>
+
+<p>或</p>
+<pre class="highlight"><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> Position;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">QNode</span> &#123;</span><br><span class="line">    ElementType *Data;     <span class="comment">/* 存储元素的数组 */</span></span><br><span class="line">    Position Front, Rear;  <span class="comment">/* 队列的头、尾指针 */</span></span><br><span class="line">    <span class="type">int</span> MaxSize;           <span class="comment">/* 队列最大容量 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">QNode</span> *Queue;</span><br><span class="line"></span><br><span class="line"><span class="function">Queue <span class="title">CreateQueue</span><span class="params">( <span class="type">int</span> MaxSize )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Queue Q = (Queue)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> QNode));</span><br><span class="line">    Q-&gt;Data = (ElementType *)<span class="built_in">malloc</span>(MaxSize * <span class="built_in">sizeof</span>(ElementType));</span><br><span class="line">    Q-&gt;Front = Q-&gt;Rear = <span class="number">0</span>;</span><br><span class="line">    Q-&gt;MaxSize = MaxSize;</span><br><span class="line">    <span class="keyword">return</span> Q;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">IsFull</span><span class="params">( Queue Q )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((Q-&gt;Rear+<span class="number">1</span>)%Q-&gt;MaxSize == Q-&gt;Front);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">AddQ</span><span class="params">( Queue Q, ElementType X )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="built_in">IsFull</span>(Q) ) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;队列满&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        Q-&gt;Rear = (Q-&gt;Rear+<span class="number">1</span>)%Q-&gt;MaxSize;</span><br><span class="line">        Q-&gt;Data[Q-&gt;Rear] = X;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">IsEmpty</span><span class="params">( Queue Q )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (Q-&gt;Front == Q-&gt;Rear);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ElementType <span class="title">DeleteQ</span><span class="params">( Queue Q )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="built_in">IsEmpty</span>(Q) ) &#123; </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;队列空&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>  &#123;</span><br><span class="line">        Q-&gt;Front =(Q-&gt;Front+<span class="number">1</span>)%Q-&gt;MaxSize;</span><br><span class="line">        <span class="keyword">return</span>  Q-&gt;Data[Q-&gt;Front];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>栈顺序存储实现</p>
+<pre class="highlight"><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> Position;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">SNode</span> &#123;</span><br><span class="line">    ElementType *Data; <span class="comment">/* 存储元素的数组 */</span></span><br><span class="line">    Position Top;      <span class="comment">/* 栈顶指针 */</span></span><br><span class="line">    <span class="type">int</span> MaxSize;       <span class="comment">/* 堆栈最大容量 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">SNode</span> *Stack;</span><br><span class="line"></span><br><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">( <span class="type">int</span> MaxSize )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Stack S = (Stack)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> SNode));</span><br><span class="line">    S-&gt;Data = (ElementType *)<span class="built_in">malloc</span>(MaxSize * <span class="built_in">sizeof</span>(ElementType));</span><br><span class="line">    S-&gt;Top = <span class="number">-1</span>;</span><br><span class="line">    S-&gt;MaxSize = MaxSize;</span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">IsFull</span><span class="params">( Stack S )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (S-&gt;Top == S-&gt;MaxSize<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">Push</span><span class="params">( Stack S, ElementType X )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="built_in">IsFull</span>(S) ) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;堆栈满&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        S-&gt;Data[++(S-&gt;Top)] = X;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">IsEmpty</span><span class="params">( Stack S )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (S-&gt;Top == <span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">( Stack S )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="built_in">IsEmpty</span>(S) ) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;堆栈空&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> ERROR; <span class="comment">/* ERROR是ElementType的特殊值，标志错误 */</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="built_in">return</span> ( S-&gt;Data[(S-&gt;Top)--] );</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>栈链式存储</p>
+<pre class="highlight"><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">PtrToSNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> &#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    PtrToSNode Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToSNode Stack;</span><br><span class="line"></span><br><span class="line">Stack <span class="title function_">CreateStack</span><span class="params">( )</span> </span><br><span class="line">&#123; <span class="comment">/* 构建一个堆栈的头结点，返回该结点指针 */</span></span><br><span class="line">    Stack S;</span><br><span class="line"></span><br><span class="line">    S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> SNode));</span><br><span class="line">    S-&gt;Next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> <span class="title function_">IsEmpty</span> <span class="params">( Stack S )</span></span><br><span class="line">&#123; <span class="comment">/* 判断堆栈S是否为空，若是返回true；否则返回false */</span></span><br><span class="line">    <span class="keyword">return</span> ( S-&gt;Next == <span class="literal">NULL</span> );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> <span class="title function_">Push</span><span class="params">( Stack S, ElementType X )</span></span><br><span class="line">&#123; <span class="comment">/* 将元素X压入堆栈S */</span></span><br><span class="line">    PtrToSNode TmpCell;</span><br><span class="line"></span><br><span class="line">    TmpCell = (PtrToSNode)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> SNode));</span><br><span class="line">    TmpCell-&gt;Data = X;</span><br><span class="line">    TmpCell-&gt;Next = S-&gt;Next;</span><br><span class="line">    S-&gt;Next = TmpCell;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ElementType <span class="title function_">Pop</span><span class="params">( Stack S )</span>  </span><br><span class="line">&#123; <span class="comment">/* 删除并返回堆栈S的栈顶元素 */</span></span><br><span class="line">    PtrToSNode FirstCell;</span><br><span class="line">    ElementType TopElem;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( IsEmpty(S) ) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;堆栈空&quot;</span>); </span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        FirstCell = S-&gt;Next; </span><br><span class="line">        TopElem = FirstCell-&gt;Data;</span><br><span class="line">        S-&gt;Next = FirstCell-&gt;Next;</span><br><span class="line">        <span class="built_in">free</span>(FirstCell);</span><br><span class="line">        <span class="keyword">return</span> TopElem;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>哈利波特 多源最短路径</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXSIZE 101   <span class="comment">//从1开始编号</span></span></span><br><span class="line"><span class="type">int</span> map[MAXSIZE][MAXSIZE] = &#123;MAXSIZE&#125;;</span><br><span class="line"><span class="type">int</span> dist[MAXSIZE] = &#123;MAXSIZE&#125;;</span><br><span class="line"><span class="type">int</span> visited[MAXSIZE] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Adjlist</span> &#123;</span><br><span class="line">    <span class="type">int</span> Vertex;</span><br><span class="line">    <span class="type">int</span> MLength;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">AdjListHead</span> &#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* Head;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">GNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> NV;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">AdjListHead</span> G[MAXSIZE];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">GNode</span>* <span class="built_in">CreateAdjlist</span>(<span class="type">int</span> size) &#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">GNode</span>* L = (<span class="keyword">struct</span> GNode*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> GNode));</span><br><span class="line">    L-&gt;NV = size;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= size; i++) &#123;</span><br><span class="line">        L-&gt;G[i].Head = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">struct</span> GNode* L, <span class="type">int</span> V1, <span class="type">int</span> V2, <span class="type">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* AdjV1 = (<span class="keyword">struct</span> Adjlist*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Adjlist));</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* p = <span class="literal">NULL</span>;</span><br><span class="line">    p = L-&gt;G[V1].Head;</span><br><span class="line">    L-&gt;G[V1].Head = AdjV1;</span><br><span class="line">    AdjV1-&gt;Vertex = V2;</span><br><span class="line">    AdjV1-&gt;MLength = len;</span><br><span class="line">    map[V1][V2] = len;</span><br><span class="line">    AdjV1-&gt;Next = p;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* AdjV2 = (<span class="keyword">struct</span> Adjlist*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Adjlist));</span><br><span class="line">    p = L-&gt;G[V2].Head;</span><br><span class="line">    L-&gt;G[V2].Head = AdjV2;</span><br><span class="line">    AdjV2-&gt;Vertex = V1;</span><br><span class="line">    AdjV2-&gt;MLength = len;</span><br><span class="line">    map[V2][V1] = len;</span><br><span class="line">    AdjV2-&gt;Next = p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Search_Dijkstra</span><span class="params">(<span class="keyword">struct</span> GNode* L, <span class="type">int</span> i)</span> </span>&#123;</span><br><span class="line">    visited[i] = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> temp = MAXSIZE;</span><br><span class="line">    <span class="type">int</span> t=i;</span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* p = <span class="literal">NULL</span>;</span><br><span class="line">    p = L-&gt;G[i].Head;</span><br><span class="line">    dist[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (p) &#123;</span><br><span class="line">        dist[p-&gt;Vertex] = p-&gt;MLength;</span><br><span class="line">        p = p-&gt;Next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        temp = MAXSIZE +<span class="number">1</span>;</span><br><span class="line">        t = i;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=L-&gt;NV;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (visited[j] == <span class="number">0</span> &amp;&amp; dist[j] &lt; temp)</span><br><span class="line">            &#123;</span><br><span class="line">                temp = dist[j];</span><br><span class="line">                t = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (t == i) <span class="keyword">break</span>;</span><br><span class="line">        visited[t] = <span class="number">1</span>;</span><br><span class="line">        p = L-&gt;G[t].Head;</span><br><span class="line">        <span class="keyword">while</span> (p) &#123;</span><br><span class="line">            <span class="keyword">if</span> (dist[p-&gt;Vertex] &gt; dist[t] + map[t][p-&gt;Vertex])</span><br><span class="line">                dist[p-&gt;Vertex] = dist[t] + map[t][p-&gt;Vertex];</span><br><span class="line">            p = p-&gt;Next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Search</span><span class="params">(<span class="keyword">struct</span> GNode* L)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> size = L-&gt;NV;</span><br><span class="line">    <span class="type">int</span> res_M = size * MAXSIZE;</span><br><span class="line">    <span class="type">int</span> res_N = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> i,j = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> temp1 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= size; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">Search_Dijkstra</span>(L, i);</span><br><span class="line">        temp1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= size; j++)</span><br><span class="line">            temp1 &lt; dist[j] ? temp1 = dist[j]: <span class="number">0</span>;</span><br><span class="line">        temp1 &lt; res_M ? res_M = temp1, res_N = i : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= size; j++) &#123;</span><br><span class="line">            visited[j] = <span class="number">0</span>;</span><br><span class="line">            dist[j] = MAXSIZE;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d&quot;</span>, res_N, res_M);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">IsConnect_DFS</span><span class="params">(<span class="keyword">struct</span> GNode * L,<span class="type">int</span> i,<span class="type">int</span> * fl)</span></span>&#123;</span><br><span class="line">    fl[i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Adjlist</span>* p = <span class="literal">NULL</span>;</span><br><span class="line">    p = L-&gt;G[i].Head;</span><br><span class="line">    <span class="keyword">while</span> (p) &#123;</span><br><span class="line">        <span class="keyword">if</span>(fl[p-&gt;Vertex]==<span class="number">0</span>)</span><br><span class="line">        &#123;        </span><br><span class="line">         fl[p-&gt;Vertex] = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">IsConnect_DFS</span>(L, p-&gt;Vertex, fl);</span><br><span class="line">        &#125;</span><br><span class="line">        p = p-&gt;Next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> flag[MAXSIZE] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">GNode</span>* L;</span><br><span class="line">    <span class="type">int</span> size, Msize;</span><br><span class="line">    <span class="type">int</span> V1, V2, len;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf_s</span>(<span class="string">&quot;%d %d\n&quot;</span>, &amp;size, &amp;Msize);</span><br><span class="line">    L = <span class="built_in">CreateAdjlist</span>(size);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=MAXSIZE;i++)</span><br><span class="line">    &#123;   </span><br><span class="line">        dist[i] = size * MAXSIZE;</span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= MAXSIZE; j++)</span><br><span class="line">            map[i][j] = size * MAXSIZE;</span><br><span class="line">    &#125;</span><br><span class="line">       </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= Msize; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf_s</span>(<span class="string">&quot;%d %d %d\n&quot;</span>, &amp;V1, &amp;V2, &amp;len);</span><br><span class="line">        <span class="built_in">Insert</span>(L, V1, V2, len);</span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="built_in">IsConnect_DFS</span>(L, <span class="number">1</span>, flag);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= size; i++)</span><br><span class="line">        <span class="keyword">if</span> (flag[i] == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">Search</span>(L);</span><br><span class="line">&#125;</span><br></pre>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-warning copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            JKLASDWD
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://gitee.com/d451/d451.git/2022/09/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%AD%98%E6%A1%A3/">
+            https://gitee.com/d451/d451.git/2022/09/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%AD%98%E6%A1%A3/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2022/09/03/about/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">Next</div>
+          
+            <div class="nav-title">about </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>TOC
+</div>
+
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>TOC
+</div>
+
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>Recent Posts
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-09-03</div>
+        <a href="/2022/09/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%AD%98%E6%A1%A3/"><div class="recent-posts-item-content">数据结构与算法笔记存档</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-09-03</div>
+        <a href="/2022/09/03/about/"><div class="recent-posts-item-content">about</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-09-03</div>
+        <a href="/2022/09/03/hello-world/"><div class="recent-posts-item-content">Hello World</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2022
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          博客
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+  </body>
+</html>
