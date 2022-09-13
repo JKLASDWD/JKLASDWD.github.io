@@ -45,7 +45,7 @@
         content="2022-09-06">
       <meta 
         property="og:article:modified_time" 
-        content="2022-09-06">
+        content="2022-09-13">
       <meta 
         property="og:article:author" 
         content="JKLASDWD">
@@ -334,7 +334,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-text">网络问题解决</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dicedriver%E6%8F%92%E4%BB%B6%E4%B8%8Eclash%E7%9A%84%E4%B8%8D%E5%85%BC%E5%AE%B9"><span class="toc-text">Dicedriver插件与clash的不兼容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3"><span class="toc-text">解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">后续的处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83-1"><span class="toc-text">思考</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-text">网络问题解决</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dicedriver%E6%8F%92%E4%BB%B6%E4%B8%8Eclash%E7%9A%84%E4%B8%8D%E5%85%BC%E5%AE%B9"><span class="toc-text">Dicedriver插件与clash的不兼容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3"><span class="toc-text">解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">后续的处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83-1"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2022-x2F-9-x2F-13-%E6%9B%B4%E6%96%B0"><span class="toc-text">2022&#x2F;9&#x2F;13 更新</span></a></li></ol>
       </div>
     </article>
   
@@ -389,7 +389,7 @@
     
     
       <span class="dot"></span>
-      <span>1.1k words</span>
+      <span>1.3k words</span>
     
   </div>
   
@@ -398,7 +398,7 @@
     id="section" 
     class="post-content">
     <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>​	在划水的时候，突发奇想，想给自己部署的mirai系QQDice!机器人加点新功能，由于还没去仔细学习myrai项目，没法用python直接调用bot，最后决定写一个小爬虫，定时长爬取中文维基百科 (zh.wikipedia.org) 的每日图片。</p>
-<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h4><p>​	简单的调用requests，re或者xpath语法，提取图片url和文字，最后f.write写入就完成了爬取</p>
+<h4 id="思考"><a href="#思考" class="headerlink" title="思考"></a><strong>思考</strong></h4><p>​	简单的调用requests，re或者xpath语法，提取图片url和文字，最后f.write写入就完成了爬取</p>
 <p>调用get方法后，发现包裹url的HTML层级实在是有点多，最后决定使用正则提取url和文字</p>
 <pre class="highlight"><span class="line">font=re.<span class="built_in">compile</span>(<span class="string">&#x27;class=&quot;image&quot; title=&quot;(.*?)&quot;&#x27;</span>)</span><br><span class="line">pictext=<span class="string">&quot;&lt;img alt=\&quot;&quot;</span> + font.findall(res.text)[<span class="built_in">int</span>(day)] + <span class="string">&quot;\&quot; &quot;</span> + <span class="string">&quot;src=.*1.5x, (.*?) 2x&quot;</span></span><br><span class="line">pic = re.<span class="built_in">compile</span>(pictext)</span><br></pre>
 
@@ -408,22 +408,26 @@
 <p>​	再通过文字定位当天的图片，共有三种清晰度和大小不同的图片包裹在img标签中，选择提取其中清晰度和大小最大的那种</p>
 <p>​	调用open()函数写入图片和txt文本，在本地测试运行成功</p>
 <p>​	部署到生产环境就面临一个问题：该如何访问中文维基百科</p>
-<h4 id="网络问题解决"><a href="#网络问题解决" class="headerlink" title="网络问题解决"></a>网络问题解决</h4><p>​	由于只需要在运行的时候使用魔法上网，没有首先考虑代理的挂载</p>
+<h4 id="网络问题解决"><a href="#网络问题解决" class="headerlink" title="网络问题解决"></a><strong>网络问题解决</strong></h4><p>​	由于只需要在运行的时候使用魔法上网，没有首先考虑代理的挂载</p>
 <p>​	第一次考虑使用 IP代理池，部署了 jhao104(<a target="_blank" rel="noopener" href="https://github.com/jhao104/proxy_pool)%E7%9A%84IP%E4%BB%A3%E7%90%86%E6%B1%A0%E4%B9%8B%E5%90%8E%EF%BC%8C%E6%89%8D%E5%8F%91%E7%8E%B0%E8%8E%B7%E5%8F%96%E7%9A%84IP%E5%A4%A7%E9%83%A8%E5%88%86%E9%83%BD%E6%98%AF%E5%9B%BD%E5%86%85IP%EF%BC%8C%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91">https://github.com/jhao104/proxy_pool)的IP代理池之后，才发现获取的IP大部分都是国内IP，无法访问外网</a></p>
 <p>​	第二次考虑修改 hosts来访问维基百科，但由于长城加固，以及SNI重定向和DNS的污染，仅仅通过修改hosts已经无法访问中文维基百科</p>
 <p>​	最后绕回到代理的挂载，最终决定使用clash，使用一个不常用的订阅链接帮助访问</p>
 <p>​	运行结果一开始良好，直到第二天爆发出BUG</p>
-<h3 id="Dicedriver插件与clash的不兼容"><a href="#Dicedriver插件与clash的不兼容" class="headerlink" title="Dicedriver插件与clash的不兼容"></a>Dicedriver插件与clash的不兼容</h3><p>​	在部署完之后，第二天访问服务器发现部分指令响应时间过长，调用stop方法关闭骰子后，重启卡在了Dicedriver的加载，导致关于Dicedriver插件的所有指令失效，仅剩mirai加载的部分jar插件可以运行</p>
+<h3 id="Dicedriver插件与clash的不兼容"><a href="#Dicedriver插件与clash的不兼容" class="headerlink" title="Dicedriver插件与clash的不兼容"></a><strong>Dicedriver插件与clash的不兼容</strong></h3><p>​	在部署完之后，第二天访问服务器发现部分指令响应时间过长，调用stop方法关闭骰子后，重启卡在了Dicedriver的加载，导致关于Dicedriver插件的所有指令失效，仅剩mirai加载的部分jar插件可以运行</p>
 <p>​	紧急开展了修复工作</p>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>​	由于是在部署一天后才发现部分指令响应失效，没有第一时间与clash的启动挂钩</p>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a><strong>解决</strong></h4><p>​	由于是在部署一天后才发现部分指令响应失效，没有第一时间与clash的启动挂钩</p>
 <p>​	第一次尝试在Dice!论坛寻找解决方法，发现有人有类似的问题，同样卡在了dicedriver插件的加载，下面有人提供了解决方法，修改json文件的配置，修改后扔卡在加载界面，尝试删除配置文件再打开，加载完成后向私聊窗口发出启动成功的指令，但仍不响应dicedriver的插件指令。再次重启，二度卡在加载界面，json文件的配置被复写回滚为原来的状态，之后再尝试修改无果，又回到了原点</p>
 <p>​	尝试解决失败，最后决定更新dice插件到更高版本，重新下载了mirai&amp;shiki系核心和dicedriver插件进行部署，切换到了另一个文件夹进行使用，发现仍然卡在加载界面，经过排除脚本加载的问题和其他问题，最后关掉clash后加载成功，进入了骰子的界面</p>
 <p>​	之后再经过多次定位，确定了罪魁祸首：clash</p>
 <p>​	已知clash启动会影响dicedriver插件的一系列指令，包括.jrrp，dicedriver自身的心跳报告和检查系统负载等功能，关闭clash后回复正常</p>
-<h4 id="后续的处理"><a href="#后续的处理" class="headerlink" title="后续的处理"></a>后续的处理</h4><p>​	</p>
+<h4 id="后续的处理"><a href="#后续的处理" class="headerlink" title="后续的处理"></a><strong>后续的处理</strong></h4><p>​	</p>
 <p>​	使用Netch重新挂在sock5代理后，可以访问且dicedriver没有异常无法加载的情况，暂时没有问题</p>
-<h3 id="思考-1"><a href="#思考-1" class="headerlink" title="思考"></a>思考</h3><p>​	没有翻阅过clash和dicedriver插件底层的源码，真是难以想象两个毫不相关的东西会发生冲突，不知道是不是clash的代理规则还是占用的7890端口导致dicedriver对于反应和处理出了一定的问题，可以正常接收消息但无法处理指令，真是神奇</p>
+<h3 id="思考-1"><a href="#思考-1" class="headerlink" title="思考"></a><strong>思考</strong></h3><p>​	没有翻阅过clash和dicedriver插件底层的源码，真是难以想象两个毫不相关的东西会发生冲突，不知道是不是clash的代理规则还是占用的7890端口导致dicedriver对于反应和处理出了一定的问题，可以正常接收消息但无法处理指令，真是神奇</p>
 <p>​	体会到了运维的辛苦，排除bug的时间都是以小时和天数为单位计算，生产环境总会有奇奇怪怪的BUG产生，难以想象是哪个模块出现了奇怪的问题导致全盘皆崩</p>
+<h3 id="2022-x2F-9-x2F-13-更新"><a href="#2022-x2F-9-x2F-13-更新" class="headerlink" title="2022&#x2F;9&#x2F;13 更新"></a><strong>2022&#x2F;9&#x2F;13 更新</strong></h3><p>​	尝试调用OS库进行命令行的执行启动和关闭clalsh，发现在使用taskkill的时候，由于clash非正常退出，会导致网络配置不正确，进而导致无法访问网络，需要手动修改网络配置</p>
+<p>​	另，任务计划程序似乎无法正常运行 启动clash的操作，暂时停止爬虫模块进行维护</p>
+<p>​	思考是否要寻找一个稳定的IP代理源，但是较为困难</p>
+<p>​	于是目光转向国外的轻量级服务器，自行部署代理，仍在努力中…</p>
 
   </div>
   <div>
@@ -480,7 +484,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-text">网络问题解决</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dicedriver%E6%8F%92%E4%BB%B6%E4%B8%8Eclash%E7%9A%84%E4%B8%8D%E5%85%BC%E5%AE%B9"><span class="toc-text">Dicedriver插件与clash的不兼容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3"><span class="toc-text">解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">后续的处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83-1"><span class="toc-text">思考</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-text">网络问题解决</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dicedriver%E6%8F%92%E4%BB%B6%E4%B8%8Eclash%E7%9A%84%E4%B8%8D%E5%85%BC%E5%AE%B9"><span class="toc-text">Dicedriver插件与clash的不兼容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3"><span class="toc-text">解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">后续的处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83-1"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2022-x2F-9-x2F-13-%E6%9B%B4%E6%96%B0"><span class="toc-text">2022&#x2F;9&#x2F;13 更新</span></a></li></ol>
 </div>
             </main>
             <aside class="right-column">
@@ -494,7 +498,7 @@
     style="padding-right: 2px;">
   </i>TOC
 </div>
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-text">网络问题解决</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dicedriver%E6%8F%92%E4%BB%B6%E4%B8%8Eclash%E7%9A%84%E4%B8%8D%E5%85%BC%E5%AE%B9"><span class="toc-text">Dicedriver插件与clash的不兼容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3"><span class="toc-text">解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">后续的处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83-1"><span class="toc-text">思考</span></a></li></ol>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-text">网络问题解决</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dicedriver%E6%8F%92%E4%BB%B6%E4%B8%8Eclash%E7%9A%84%E4%B8%8D%E5%85%BC%E5%AE%B9"><span class="toc-text">Dicedriver插件与clash的不兼容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3"><span class="toc-text">解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">后续的处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83-1"><span class="toc-text">思考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2022-x2F-9-x2F-13-%E6%9B%B4%E6%96%B0"><span class="toc-text">2022&#x2F;9&#x2F;13 更新</span></a></li></ol>
     </article>
   
   
