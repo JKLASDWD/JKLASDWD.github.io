@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta 
+    http-equiv="X-UA-Compatible" 
+    content="ie=edge">
+  <meta 
+    name="theme-color" 
+    content="#fff" 
+    id="theme-color">
+  <meta 
+    name="description" 
+    content="Hexo">
+  <link 
+    rel="icon" 
+    href="/img/website_logo.png">
+  <title>操作系统</title>
+  
+    
+      <meta 
+        property="og:title" 
+        content="操作系统">
+    
+    
+      <meta 
+        property="og:url" 
+        content="https://github.com/JKLASDWD/JKLASDWD.github.io/2023/07/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
+    
+    
+      <meta 
+        property="og:img" 
+        content="/img/author.png">
+    
+    
+    
+      <meta 
+        property="og:type" 
+        content="article">
+      <meta 
+        property="og:article:published_time" 
+        content="2023-07-29">
+      <meta 
+        property="og:article:modified_time" 
+        content="2023-07-29">
+      <meta 
+        property="og:article:author" 
+        content="JKLASDWD">
+      
+        
+      
+    
+  
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  <link rel="preload" href="/css/main.css" as="style" >
+  
+  <link rel="modulepreload" href="//instant.page/5.1.0">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_i1kgafibvw.css">
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+  
+  
+  
+    <link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+  
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+    function loadCSS(href, data, attr) {
+      var sheet = document.createElement('link');
+      sheet.ref = 'stylesheet';
+      sheet.href = href;
+      sheet.dataset[data] = attr;
+      document.head.appendChild(sheet);
+    }
+    function changeCSS(cssFile, data, attr) {
+      var oldlink = document.querySelector(data);
+      var newlink = document.createElement("link");
+      newlink.setAttribute("rel", "stylesheet");
+      newlink.setAttribute("href", cssFile);
+      newlink.dataset.prism = attr;
+      document.head.replaceChild(newlink, oldlink);
+    }
+  </script>
+  
+    
+  
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+  </script>
+  
+    <script>
+      var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+        document.getElementById('theme-color').dataset.mode = setting;
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+        document.getElementById('theme-color').dataset.mode = getCssMediaQuery();
+      }
+    };
+    setDarkmode();
+    </script>
+  
+  
+  
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.js" as="script">
+    <link rel="preload" href="/js/lib/lightbox/baguetteBox.min.css" as="style" >
+  
+  
+    <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body>
+    <div class="wrapper">
+       
+      <nav class="navbar">
+  <div class="navbar-logo">
+    <a class="navbar-logo-main" href="/">
+      
+        <img 
+          class="navbar-logo-img"
+          width="32"
+          height="32"
+          src="/img/website_logo.png" 
+          alt="blog logo">
+      
+      <span class="navbar-logo-dsc">自留地</span>
+      </a>
+  </div>
+  <div class="navbar-menu">
+    
+      <a 
+        href="/" 
+        class="navbar-menu-item">
+        
+          主页
+        
+      </a>
+    
+      <a 
+        href="/archives" 
+        class="navbar-menu-item">
+        
+          文章
+        
+      </a>
+    
+      <a 
+        href="/tags" 
+        class="navbar-menu-item">
+        
+          标签
+        
+      </a>
+    
+      <a 
+        href="/categories" 
+        class="navbar-menu-item">
+        
+          分类
+        
+      </a>
+    
+      <a 
+        href="/about" 
+        class="navbar-menu-item">
+        
+          关于
+        
+      </a>
+    
+      <a 
+        href="/links" 
+        class="navbar-menu-item">
+        
+          友链
+        
+      </a>
+    
+    <button 
+      class="navbar-menu-item darknavbar navbar-menu-btn" 
+      aria-label="Toggle dark mode"
+      id="dark">
+      <i class="iconfont icon-weather"></i>
+    </button>
+    <button 
+      class="navbar-menu-item searchnavbar navbar-menu-btn" 
+      aria-label="Toggle search"
+      id="search">
+      <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+        class="iconify iconify--ion" width="28" height="28" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512">
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z"></path>
+        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+          d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z"></path>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="28"
+          d="M283.64 283.64L336 336"></path>
+      </svg>
+    </button>
+  </div>
+</nav> 
+      
+      <div 
+        id="local-search" 
+        style="display: none">
+        <input
+          class="navbar-menu-item"
+          id="search-input"
+          placeholder="请输入搜索内容..." />
+        <div id="search-content"></div>
+      </div>
+      
+      <div class="section-wrap">
+        <div class="container">
+          <div class="columns">
+            <aside class="left-column">
+              
+              <div class="card card-author">
+                
+  <img 
+    src="/img/author.png" 
+    class="author-img"
+    width="88"
+    height="88"
+    alt="author avatar">
+
+<p class="author-name">JKLASDWD</p>
+<p class="author-description">电子农民工，热爱代码</p>
+<div class="author-message">
+  <a 
+    class="author-posts-count" 
+    href="/archives">
+    <span>12</span>
+    <span>Posts</span>
+  </a>
+  <a 
+    class="author-categories-count" 
+    href="/categories">
+    <span>0</span>
+    <span>Categories</span>
+  </a>
+  <a 
+    class="author-tags-count" 
+    href="/tags">
+    <span>0</span>
+    <span>Tags</span>
+  </a>
+</div>
+
+  <div class="author-card-society">
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/5136111">
+          <i class="iconfont icon-bilibili society-icon"></i>
+        </a>
+      </div>
+    
+      <div class="author-card-society-icon">
+        <a target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/76561198203652348/">
+          <i class="iconfont icon-steam society-icon"></i>
+        </a>
+      </div>
+    
+  </div>
+
+              </div>
+               <div class="sticky-tablet">
+  
+  
+    <article class="display-when-two-columns spacer">
+      <div class="card card-content toc-card">
+        <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>TOC
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="toc-text">汇编代码的状态机模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95-C-%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%E6%A8%A1%E5%9E%8B-%E8%AF%AD%E4%B9%89"><span class="toc-text">简单 C 程序的状态机模型 (语义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Python%E4%B8%AD%E6%A8%A1%E6%8B%9F%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C"><span class="toc-text">在Python中模拟多线程、多进程操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83"><span class="toc-text">5. 多处理器编程：从入门到放弃</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E5%87%BA%E6%9B%B4%E5%A4%9A%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">问出更多的问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E9%9A%90%E5%90%AB%E5%81%87%E8%AE%BE"><span class="toc-text">状态机的隐含假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A%E6%B1%82%E5%92%8C"><span class="toc-text">例子：求和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BE%E5%BC%83-1-%EF%BC%9A%E6%8C%87%E4%BB%A4-x2F-%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%8E%9F%E5%AD%90%E6%80%A7%E5%81%87%E8%AE%BE"><span class="toc-text">放弃 (1)：指令&#x2F;代码执行原子性假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BE%E5%BC%83%E5%8E%9F%E5%AD%90%E6%80%A7%E5%81%87%E8%AE%BE%E7%9A%84%E5%90%8E%E6%9E%9C"><span class="toc-text">放弃原子性假设的后果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A%E6%B1%82%E5%92%8C-%E5%86%8D%E6%AC%A1%E5%87%BA%E7%8E%B0"><span class="toc-text">例子：求和 (再次出现)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BE%E5%BC%83-2-%EF%BC%9A%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%81%87%E8%AE%BE"><span class="toc-text">放弃 (2)：程序的顺序执行假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E8%AF%81%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-text">保证执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%B1%82%E5%92%8C"><span class="toc-text">实现正确的求和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%97%AE%E9%A2%98%EF%BC%9A%E5%AE%9A%E4%B9%89"><span class="toc-text">互斥问题：定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%97%AE%E9%A2%98%E7%9A%84%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95"><span class="toc-text">互斥问题的经典算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%81%87%E8%AE%BE"><span class="toc-text">实现互斥的基本假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Atomic-Exchange-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Atomic Exchange 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%EF%BC%9A%E5%81%9A%E9%A2%98%E5%AE%B6-v-s-%E7%A7%91%E5%AD%A6%E5%AE%B6"><span class="toc-text">实现互斥：做题家 v.s. 科学家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%EF%BC%9A%E8%87%AA%E6%97%8B%E9%94%81"><span class="toc-text">实现互斥：自旋锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%EF%BC%9A%E8%87%AA%E6%97%8B%E9%94%81-1"><span class="toc-text">实现互斥：自旋锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%BC%BA%E5%A4%A7%E7%9A%84%E5%8E%9F%E5%AD%90%E6%8C%87%E4%BB%A4"><span class="toc-text">更强大的原子指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%87%BA%E7%9A%84-Compare-%E7%94%A8%E5%A4%84"><span class="toc-text">多出的 Compare: 用处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E6%97%8B%E9%94%81%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-text">自旋锁的缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scalability-%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B0%E7%BB%B4%E5%BA%A6"><span class="toc-text">Scalability: 性能的新维度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E6%97%8B%E9%94%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">自旋锁的使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B-%E9%95%BF%E4%B8%B4%E7%95%8C%E5%8C%BA%E7%9A%84%E4%BA%92%E6%96%A5"><span class="toc-text">实现线程 + 长临界区的互斥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B-%E9%95%BF%E4%B8%B4%E7%95%8C%E5%8C%BA%E7%9A%84%E4%BA%92%E6%96%A5-cont%E2%80%99d"><span class="toc-text">实现线程 + 长临界区的互斥 (cont’d)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E4%BA%92%E6%96%A5%E7%9A%84%E4%B8%80%E4%BA%9B%E5%88%86%E6%9E%90"><span class="toc-text">关于互斥的一些分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E8%B0%83%E8%AF%95%E4%B9%8B%E5%89%8D"><span class="toc-text">开始调试之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E5%9B%B0%E9%9A%BE%E7%9A%84%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0"><span class="toc-text">调试困难的根本原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA"><span class="toc-text">调试理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA-cont%E2%80%99d"><span class="toc-text">调试理论 (cont’d)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E4%BB%AC%E6%98%AF%E5%90%A6%E9%81%87%E5%88%B0%E8%BF%87%E4%BB%A5%E4%B8%8B%E4%BB%A4%E4%BA%BA%E6%8A%93%E7%8B%82%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%9F"><span class="toc-text">你们是否遇到过以下令人抓狂的情况？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%96%E7%95%8C%EF%BC%9A%E4%B8%80%E5%88%87%E7%9A%86%E5%8F%AF%E8%B0%83%E8%AF%95"><span class="toc-text">计算机世界：一切皆可调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA"><span class="toc-text">使用调试理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GDB-%E5%85%A5%E9%97%A8"><span class="toc-text">GDB: 入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA%EF%BC%9A%E5%BA%94%E7%94%A8-Again"><span class="toc-text">调试理论：应用 (Again)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E5%9F%BA%E6%9C%AC%E5%87%86%E5%88%99%EF%BC%9A%E5%9B%9E%E9%A1%BE"><span class="toc-text">编程基本准则：回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA%E7%9A%84%E6%9C%80%E9%87%8D%E8%A6%81%E5%BA%94%E7%94%A8"><span class="toc-text">调试理论的最重要应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A%E7%BB%B4%E6%8A%A4%E7%88%B6%E4%BA%B2%E8%8A%82%E7%82%B9%E7%9A%84%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="toc-text">例子：维护父亲节点的平衡树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%8F%E5%88%A9%EF%BC%9A%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%96%AD%E8%A8%80"><span class="toc-text">福利：更多的断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%EF%BC%9A%E4%B8%87%E8%83%BD%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6-M2"><span class="toc-text">条件变量：万能并行计算框架 (M2)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%EF%BC%9A%E6%9B%B4%E5%8F%A4%E6%80%AA%E7%9A%84%E4%B9%A0%E9%A2%98-x2F-%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">条件变量：更古怪的习题&#x2F;面试题</span></a>
+      </div>
+    </article>
+  
+  
+  <article class="card card-content categories-widget">
+    <div class="categories-card">
+  <div class="categories-header">
+    <i 
+      class="iconfont icon-fenlei" 
+      style="padding-right: 2px;">
+    </i>Categories
+  </div>
+  <div class="categories-list">
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content tags-widget">
+    <div class="tags-card">
+  <div class="tags-header">
+    <i 
+      class="iconfont icon-biaoqian" 
+      style="padding-right: 2px;">
+    </i>hot tags
+  </div>
+  <div class="tags-list">
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+            <main class="main-column">
+              
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      操作系统
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2023-07-29T13:38:52.000Z">
+      <i 
+        class="iconfont icon-calendar" 
+        style="margin-right: 2px;">
+      </i>
+      <span>2023-07-29</span>
+    </time>
+    
+    
+      <span class="dot"></span>
+      <span>11.1k words</span>
+    
+  </div>
+  
+  </header>
+  <div 
+    id="section" 
+    class="post-content">
+    <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>截止到2023.7.29的南京大学jyy的2023操作系统课的笔记，强烈推荐</p>
+<p>让我感觉学的数字电路“稍微”有那么一点用的课</p>
+<p>很可惜，南大的校内OJ并不对外校开放，实验代码的正确性无从考证（</p>
+<p>但还是强烈推荐，jyy讲的的确好</p>
+<p>课程主页：<a target="_blank" rel="noopener" href="https://jyywiki.cn/OS/2023">https://jyywiki.cn/OS/2023</a></p>
+<p>课程教科书：Operating Systems: Three Easy Pieces</p>
+<p><a target="_blank" rel="noopener" href="https://pages.cs.wisc.edu/~remzi/OSTEP/">https://pages.cs.wisc.edu/~remzi/OSTEP/</a></p>
+<p>（实在看不下去英文可以去找中文版，虽然翻译不咋地，但还算能看）</p>
+<p>以下是正文，包含语序混乱以及各种乱七八糟的注解（</p>
+<p>图床是自用的腾讯云COS，还算可以？</p>
+<p>操作系统</p>
+<p>汇编代码和最小可执行文件</p>
+<p>最小可执行？会想到Hello World</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre>
+
+<p>命令行</p>
+<pre class="highlight"><span class="line">gcc hello.c</span><br><span class="line">file a.out</span><br><span class="line">./a.out </span><br><span class="line">--&gt;Hello World</span><br><span class="line">objdump命令进行反汇编</span><br><span class="line">gcc hello.c -static</span><br><span class="line">gcc hello.c -static | less</span><br><span class="line">gcc hello.c -static | wc -l</span><br><span class="line">gcc hello.c -static --verbose</span><br></pre>
+
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230720184929.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230720184929.png"></p>
+<p>编译过程</p>
+<p>.c —&gt; .i         </p>
+<p>.i—-&gt; .s        </p>
+<p>.s—-&gt;.o</p>
+<p>.o—-&gt;.out </p>
+<pre class="highlight"><span class="line">gcc hello.c -static -Wl --verbose</span><br></pre>
+
+
+
+<p>解决异常退出</p>
+<p>–&gt;”syscall”</p>
+<pre class="highlight"><span class="line">movq $SYS_exit, %rax</span><br><span class="line">movq $1, %rdl</span><br><span class="line">syscall</span><br><span class="line">把控制权完全交给操作系统</span><br><span class="line">操作系统可以改变程序状态甚至终止程序</span><br></pre>
+
+<p>（movq等指令为汇编指令集）</p>
+<h3 id="汇编代码的状态机模型"><a href="#汇编代码的状态机模型" class="headerlink" title="汇编代码的状态机模型"></a>汇编代码的状态机模型</h3><p>​	Everything is a state machine: 计算机 &#x3D; 数字电路 &#x3D; 状态机</p>
+<p>​	状态 &#x3D; 内存 MM + 寄存器 RR<br>​	初始状态 &#x3D; ABI 规定 (例如有一个合法的 %rsp)<br>​	状态迁移 &#x3D; 执行一条指令<br>​		我们花了一整个《计算机系统基础》解释这件事<br>​		gdb 同样可以观察状态和执行<br>操作系统上的程序</p>
+<p>所有的指令都只能计算<br>    deterministic: mov, add, sub, call, …<br>    non-deterministic: rdrand, …<br>    syscall 把 (M,R)(M,R) 完全交给操作系统</p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230720220918.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230720220918.png"></p>
+<p>编译器 —&gt; 取栈顶的pc值，执行对应语句</p>
+<p>把高级语言编译成为一个状态机，执行指令序列</p>
+<h3 id="简单-C-程序的状态机模型-语义"><a href="#简单-C-程序的状态机模型-语义" class="headerlink" title="简单 C 程序的状态机模型 (语义)"></a>简单 C 程序的状态机模型 (语义)</h3><p>对 C 程序做出简化</p>
+<p>简化：改写成每条语句至多一次运算&#x2F;函数调用的形式<br>真的有这种工具 (C Intermediate Language) 和解释器<br>状态机定义</p>
+<p>状态 &#x3D; 堆 + 栈<br>初始状态 &#x3D; main 的第一条语句<br>状态迁移 &#x3D; 执行一条语句中的一小步<br>(这还只是 “粗浅” 的理解)</p>
+<p>Talk is cheap. Show me the code. (Linus Torvalds)<br>任何真正的理解都应该落到可以执行的代码</p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230721002850.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230721002850.png"></p>
+<p>:%!xxd</p>
+<p>%–&gt;全选  (1,$)</p>
+<p>!—&gt;调用第三方命令</p>
+<p>xxd–&gt;十六进制格式查看文件</p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230721003042.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230721003042.png"></p>
+<p>ELF—&gt;可执行文件的文件头</p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230721012511.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230721012511.png"></p>
+<p>strace -f gcc hello.c |&amp; vim -</p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230722010844.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230722010844.png"></p>
+<p>CPU—&gt;FirmWare（主板）</p>
+<p>CPU 经过Reset后，寄存器清空，再reboot，将firmware上的指令加载到内存上，一句句执行，启动操作系统</p>
+<p>BIOS 提供机制，将程序员的代码载入内存</p>
+<p>Legacy BIOS 把第一个可引导设备的第一个 512 字节加载到物理内存的 7c00 位置<br>此时处理器处于 16-bit 模式<br>规定 CS:IP &#x3D; 0x7c00, (R[CS] &lt;&lt; 4) | R[IP] &#x3D;&#x3D; 0x7c00<br>可能性1：CS &#x3D; 0x07c0, IP &#x3D; 0<br>可能性2：CS &#x3D; 0, IP &#x3D; 0x7c00<br>其他没有任何约束</p>
+<p>55aa 引导分区标记（启动盘）</p>
+<p>我们真正关心的概念</p>
+<p>1.应用程序 (高级语言状态机)<br>2.系统调用 (操作系统 API)<br>3.操作系统内部实现<br>没有人规定上面三者如何实现</p>
+<p>通常的思路：真实的操作系统 + QEMU&#x2F;NEMU 模拟器<br>我们的思路<br>应用程序 &#x3D; 纯粹计算的 Python 代码 + 系统调用<br>操作系统 &#x3D; Python 系统调用实现，有 “假想” 的 I&#x2F;O 设备<br>def main():<br>    sys_write(‘Hello, OS World’)</p>
+<h3 id="在Python中模拟多线程、多进程操作"><a href="#在Python中模拟多线程、多进程操作" class="headerlink" title="在Python中模拟多线程、多进程操作"></a>在Python中模拟多线程、多进程操作</h3><p>yield关键字：return一个值，但是对应的对象并未退出</p>
+<p>利用yield实现一个模拟的操作系统</p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230722220843.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230722220843.png"></p>
+<p>多线程之间的切换？</p>
+<p>os-model</p>
+<pre class="highlight"><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OperatingSystem</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;A minimal executable operating system model.&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    SYSCALLS = [<span class="string">&#x27;choose&#x27;</span>, <span class="string">&#x27;write&#x27;</span>, <span class="string">&#x27;spawn&#x27;</span>, <span class="string">&#x27;sched&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Thread</span>:</span><br><span class="line">        <span class="string">&quot;&quot;&quot;A &quot;freezed&quot; thread state.&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, func, *args</span>):</span><br><span class="line">            self._func = func(*args)</span><br><span class="line">            self.retval = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">step</span>(<span class="params">self</span>):</span><br><span class="line">            <span class="string">&quot;&quot;&quot;Proceed with the thread until its next trap.&quot;&quot;&quot;</span></span><br><span class="line">            syscall, args, *_ = self._func.send(self.retval)</span><br><span class="line">            self.retval = <span class="literal">None</span></span><br><span class="line">            <span class="keyword">return</span> syscall, args</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, src</span>):</span><br><span class="line">        variables = &#123;&#125;</span><br><span class="line">        <span class="built_in">exec</span>(src, variables)</span><br><span class="line">        self._main = variables[<span class="string">&#x27;main&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">self</span>):</span><br><span class="line">        threads = [OperatingSystem.Thread(self._main)]</span><br><span class="line">        <span class="keyword">while</span> threads:  <span class="comment"># Any thread lives</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="keyword">match</span> (t := threads[<span class="number">0</span>]).step():</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">&#x27;choose&#x27;</span>, xs:  <span class="comment"># Return a random choice</span></span><br><span class="line">                        t.retval = random.choice(xs)</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">&#x27;write&#x27;</span>, xs:  <span class="comment"># Write to debug console</span></span><br><span class="line">                        <span class="built_in">print</span>(xs, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">&#x27;spawn&#x27;</span>, (fn, args):  <span class="comment"># Spawn a new thread</span></span><br><span class="line">                        threads += [OperatingSystem.Thread(fn, *args)]</span><br><span class="line">                    <span class="keyword">case</span> <span class="string">&#x27;sched&#x27;</span>, _:  <span class="comment"># Non-deterministic schedule</span></span><br><span class="line">                        random.shuffle(threads)</span><br><span class="line">            <span class="keyword">except</span> StopIteration:  <span class="comment"># A thread terminates</span></span><br><span class="line">                threads.remove(t)</span><br><span class="line">                random.shuffle(threads)  <span class="comment"># sys_sched()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(sys.argv) &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;Usage: <span class="subst">&#123;sys.argv[<span class="number">0</span>]&#125;</span> file&#x27;</span>)</span><br><span class="line">        exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    src = Path(sys.argv[<span class="number">1</span>]).read_text()</span><br><span class="line">    <span class="keyword">for</span> syscall <span class="keyword">in</span> OperatingSystem.SYSCALLS:</span><br><span class="line">        src = src.replace(<span class="string">f&#x27;sys_<span class="subst">&#123;syscall&#125;</span>&#x27;</span>,        <span class="comment"># sys_write(...)</span></span><br><span class="line">                          <span class="string">f&#x27;yield &quot;<span class="subst">&#123;syscall&#125;</span>&quot;, &#x27;</span>)  <span class="comment">#  -&gt; yield &#x27;write&#x27;, (...)</span></span><br><span class="line"></span><br></pre>
+
+
+
+<pre class="highlight"><span class="line">mosaic 地址 https://jyywiki.cn/pages/OS/2023/mosaic/mosaic.py</span><br></pre>
+
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230722230152.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230722230152.png"></p>
+<p>最小值，为什么是<strong>2</strong>？</p>
+<pre class="highlight"><span class="line">应该是有错的，正确的应该需要在heap.x＝tmp语句后加一个sched。</span><br><span class="line">如果没有这个sched，对于当前执行Tsum的generator而言，在当前循环执行第一句tmp＝heap.x时，heap.x的值一定是自己在上个循环刚赋值过的值（因为这两个循环的衔接处没有sched就只能这样执行），而构造最小值的关键，就是要有机会每次读取heap.x的值的时候能够有机会读取别的generator刚赋值过的值，只有这样才可以在当前generator的最后一个循环拿到别的generator刚走完第一个循环时的值，从而构建最小值。</span><br></pre>
+
+<h3 id="5-多处理器编程：从入门到放弃"><a href="#5-多处理器编程：从入门到放弃" class="headerlink" title="5. 多处理器编程：从入门到放弃"></a>5. 多处理器编程：从入门到放弃</h3><p>线程：共享内存的执行流</p>
+<ul>
+<li>执行流拥有独立的堆栈&#x2F;寄存器</li>
+</ul>
+<hr>
+<p>简化的线程 API (thread.h)</p>
+<ul>
+<li>&#96;&#96;&#96;<br>spawn(fn)<pre class="highlight"><span class="line"></span><br><span class="line">- 创建一个入口函数是</span><br><span class="line"></span><br></pre>
+  fn  <pre class="highlight"><span class="line"></span><br><span class="line">    的线程，并立即开始执行</span><br><span class="line"></span><br><span class="line">    - `void fn(int tid) &#123; ... &#125;`</span><br><span class="line">    - 参数 `tid` 从 1 开始编号</span><br><span class="line"></span><br><span class="line">  - 行为：`sys_spawn(fn, tid)`</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  join()</span><br></pre>
+
+<ul>
+<li>等待所有运行线程的返回 (也可以不调用)</li>
+<li>行为：<code>while (done != T) sys_sched()</code></li>
+</ul>
+</li>
+</ul>
+<p>多处理器编程：一个 API 搞定</p>
+<pre class="highlight"><span class="line">#include &quot;thread.h&quot;</span><br><span class="line"></span><br><span class="line">void Ta() &#123; while (1) &#123; printf(&quot;a&quot;); &#125; &#125;</span><br><span class="line">void Tb() &#123; while (1) &#123; printf(&quot;b&quot;); &#125; &#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  create(Ta);</span><br><span class="line">  create(Tb);</span><br><span class="line">&#125;</span><br></pre>
+
+<ul>
+<li>这个程序可以利用系统中的多处理器<ul>
+<li>操作系统会自动把线程放置在不同的处理器上</li>
+<li>CPU 使用率超过了 100%</li>
+</ul>
+</li>
+</ul>
+<h4 id="问出更多的问题"><a href="#问出更多的问题" class="headerlink" title="问出更多的问题"></a>问出更多的问题</h4><p><code>Ta</code> 和 <code>Tb</code> 真的共享内存吗？</p>
+<ul>
+<li>如何证明&#x2F;否证这件事？</li>
+</ul>
+<hr>
+<p>如何证明线程具有独立堆栈 (以及确定堆栈的范围)？</p>
+<ul>
+<li>输出混乱，应该如何处理？</li>
+</ul>
+<h2 id="状态机的隐含假设"><a href="#状态机的隐含假设" class="headerlink" title="状态机的隐含假设"></a>状态机的隐含假设</h2><p>“世界上只有一个状态机”</p>
+<ul>
+<li>没有其他任何人能 “干涉” 程序的状态</li>
+<li>推论：对变量的 load 一定返回本线程最后一次 store 的值<ul>
+<li>这也是编译优化的基本假设</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>但共享内存推翻了这个假设</p>
+<pre class="highlight"><span class="line">int Tworker() &#123;</span><br><span class="line">  printf(&quot;%d\n&quot;, x);  // Global x</span><br><span class="line">  printf(&quot;%d\n&quot;, x);</span><br><span class="line">&#125;</span><br></pre>
+
+<ul>
+<li>其他线程随时可以修改x<ul>
+<li>导致两次可能读到不同的 <code>x</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="例子：求和"><a href="#例子：求和" class="headerlink" title="例子：求和"></a>例子：求和</h2><p>分两个线程，计算 1+1+1+…+1+1+1(共计 2n 个 1)</p>
+<pre class="highlight"><span class="line">#define N 100000000</span><br><span class="line">long sum = 0;</span><br><span class="line"></span><br><span class="line">void Tsum() &#123; for (int i = 0; i &lt; N; i++) sum++; &#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  create(Tsum);</span><br><span class="line">  create(Tsum);</span><br><span class="line">  join();</span><br><span class="line">  printf(&quot;sum = %ld\n&quot;, sum);</span><br><span class="line">&#125;</span><br></pre>
+
+<p>可能的结果</p>
+<ul>
+<li>119790390, 99872322 (结果可以比 <code>N</code> 还要小), …</li>
+<li>直接使用汇编指令也不行</li>
+</ul>
+<h2 id="放弃-1-：指令-x2F-代码执行原子性假设"><a href="#放弃-1-：指令-x2F-代码执行原子性假设" class="headerlink" title="放弃 (1)：指令&#x2F;代码执行原子性假设"></a>放弃 (1)：指令&#x2F;代码执行原子性假设</h2><blockquote>
+<p>“处理器一次执行一条指令” 的基本假设在今天的计算机系统上不再成立 (我们的模型作出了简化的假设)。</p>
+</blockquote>
+<p>单处理器多线程</p>
+<ul>
+<li>线程在运行时可能被中断，切换到另一个线程执行</li>
+</ul>
+<p>多处理器多线程</p>
+<ul>
+<li>线程根本就是并行执行的</li>
+</ul>
+<hr>
+<p>(历史) 1960s，大家争先在共享内存上实现原子性 (互斥)</p>
+<ul>
+<li>但几乎所有的实现都是错的，直到 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Dekker's_algorithm">Dekker’s Algorithm</a>，还只能保证两个线程的互斥</li>
+</ul>
+<h2 id="放弃原子性假设的后果"><a href="#放弃原子性假设的后果" class="headerlink" title="放弃原子性假设的后果"></a>放弃原子性假设的后果</h2><p><code>printf</code> 还能在多线程程序里调用吗？</p>
+<pre class="highlight"><span class="line">void thread1() &#123; while (1) &#123; printf(&quot;a&quot;); &#125; &#125;</span><br><span class="line">void thread2() &#123; while (1) &#123; printf(&quot;b&quot;); &#125; &#125;</span><br></pre>
+
+<p>我们都知道 printf 是有缓冲区的 (为什么？)</p>
+<ul>
+<li>如果执行 <code>buf[pos++] = ch</code> (<code>pos</code> 共享) 不就 💥 了吗？</li>
+<li>printf()在其官方文档中提到了这一点，它是多线程安全的(MT-safe)</li>
+</ul>
+<h2 id="例子：求和-再次出现"><a href="#例子：求和-再次出现" class="headerlink" title="例子：求和 (再次出现)"></a>例子：求和 (再次出现)</h2><p>分两个线程，计算 1+1+1+\ldots+11+1+1+…+1 (共计 2n2<em>n</em> 个 11)</p>
+<pre class="highlight"><span class="line">#define N 100000000</span><br><span class="line">long sum = 0;</span><br><span class="line"></span><br><span class="line">void Tsum() &#123; for (int i = 0; i &lt; N; i++) sum++; &#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  create(Tsum);</span><br><span class="line">  create(Tsum);</span><br><span class="line">  join();</span><br><span class="line">  printf(&quot;sum = %ld\n&quot;, sum);</span><br><span class="line">&#125;</span><br></pre>
+
+<p>如果添加编译优化？</p>
+<ul>
+<li><code>-O1</code>: 100000000 </li>
+<li><code>-O2</code>: 200000000</li>
+</ul>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230724124153.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230724124153.png"></p>
+<p>-O1，两个线程现将sum的值读入到寄存器%rdx中，再将循环后的值赋到sum之中</p>
+<p>-O2，直接将循环拆开成为常数</p>
+<h2 id="放弃-2-：程序的顺序执行假设"><a href="#放弃-2-：程序的顺序执行假设" class="headerlink" title="放弃 (2)：程序的顺序执行假设"></a>放弃 (2)：程序的顺序执行假设</h2><blockquote>
+<p>编译器对内存访问 “eventually consistent” 的处理导致共享内存作为线程同步工具的失效。</p>
+</blockquote>
+<p>刚才的例子</p>
+<ul>
+<li><code>-O1</code>: <code>R[eax] = sum; R[eax] += N; sum = R[eax]</code></li>
+<li><code>-O2</code>: <code>sum += N;</code></li>
+<li>(你的编译器也许是不同的结果)</li>
+</ul>
+<p>另一个例子</p>
+<pre class="highlight"><span class="line">while (!done);</span><br><span class="line">// would be optimized to</span><br><span class="line">if (!done) while (1);</span><br></pre>
+
+<h2 id="保证执行顺序"><a href="#保证执行顺序" class="headerlink" title="保证执行顺序"></a>保证执行顺序</h2><p>回忆 “编译正确性”</p>
+<ul>
+<li><p>C 状态和汇编状态机的 “可观测行为等价”</p>
+</li>
+<li><p>方法 1：插入 “不可优化” 代码</p>
+<ul>
+<li>&#96;&#96;&#96;<br>asm volatile (“” ::: “memory”);<pre class="highlight"><span class="line"></span><br><span class="line">    - “Clobbers memory”</span><br><span class="line"></span><br><span class="line">- 方法 2：标记变量 load/store 为不可优化</span><br><span class="line"></span><br><span class="line">  - 使用 `volatile` 变量</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br></pre></li>
+</ul>
+</li>
+</ul>
+<p>extern int volatile done;</p>
+<p>while (!done) ;</p>
+<pre class="highlight"><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 放弃 (3)：处理器间的可见性</span><br><span class="line"></span><br><span class="line">## 例子</span><br><span class="line"></span><br></pre>
+<p>int x &#x3D; 0, y &#x3D; 0;</p>
+<p>void T1() {<br>  x &#x3D; 1; int t &#x3D; y; &#x2F;&#x2F; Store(x); Load(y)<br>  __sync_synchronize();<br>  printf(“%d”, t);<br>}</p>
+<p>void T2() {<br>  y &#x3D; 1; int t &#x3D; x; &#x2F;&#x2F; Store(y); Load(x)<br>  __sync_synchronize();<br>  printf(“%d”, t);<br>}</p>
+<pre class="highlight"><span class="line"></span><br><span class="line">遍历模型告诉我们：01, 10, 11</span><br><span class="line"></span><br><span class="line">实际结论则是：</span><br><span class="line"></span><br><span class="line">![](https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230724140908.png)</span><br><span class="line"></span><br><span class="line">问题出在哪？</span><br><span class="line"></span><br><span class="line">- 机器永远是对的</span><br><span class="line">- Model checker 的结果和实际的结果不同 → 假设错了</span><br><span class="line"></span><br><span class="line">## 现代处理器也是 (动态) 编译器！</span><br><span class="line"></span><br><span class="line">错误 (简化) 的假设</span><br><span class="line"></span><br><span class="line">- 一个 CPU 执行一条指令到达下一状态</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">实际的实现</span><br><span class="line"></span><br><span class="line">- 电路将连续的指令 “编译” 成更小的*μ*ops</span><br><span class="line">  - RF[9] = load(RF[7] + 400)</span><br><span class="line">  - store(RF[12], RF[13])</span><br><span class="line">  - RF[3] = RF[4] + RF[5]</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">在任何时刻，处理器都维护一个 *μ*ops 的 “池子”</span><br><span class="line"></span><br><span class="line">- 与编译器一样，做 “顺序执行” 假设：没有其他处理器 “干扰”</span><br><span class="line">- 每一周期执行尽可能多的 μops- 多路发射、乱序执行、按序提交</span><br><span class="line"></span><br><span class="line">## 放弃 (3)：多处理器间内存访问的即时可见性</span><br><span class="line"></span><br><span class="line">&gt; 满足单处理器 eventual memory consistency 的执行，在多处理器系统上可能无法序列化！</span><br><span class="line"></span><br><span class="line">当 x≠y 时，对 x, y 的内存读写可以交换顺序</span><br><span class="line"></span><br><span class="line">- 它们甚至可以在同一个周期里完成 (只要 load/store unit 支持)</span><br><span class="line">- 如果写x发生 cache miss，可以让读*y*先执行</span><br><span class="line">  - 满足 “尽可能执行 *μ*op” 的原则，最大化处理器性能</span><br><span class="line"></span><br></pre>
+<pre><code> # &lt;-----------+
+</code></pre>
+<p>movl $1, (x)   #   |<br>movl (y), %eax # –+</p>
+<pre class="highlight"><span class="line"></span><br><span class="line">- 在多处理器上的表现</span><br><span class="line">  - 两个处理器分别看到 y=0 和 x=0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 宽松内存模型 (Relaxed/Weak Memory Model)</span><br><span class="line"></span><br><span class="line">&gt; 宽松内存模型的目的是使单处理器的执行更高效。</span><br><span class="line"></span><br><span class="line">x86 已经是市面上能买到的 “最强” 的内存模型了 </span><br><span class="line"></span><br><span class="line">- 这也是 Intel 自己给自己加的包袱</span><br><span class="line">- 看看 [ARM/RISC-V](https://research.swtch.com/mem-weak@2x.png) 吧，根本就是个分布式系统</span><br><span class="line"></span><br><span class="line">![](https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230724142457.png)</span><br><span class="line"></span><br></pre>
+<pre><code>                                X86架构
+                            每个线程有独立的存储空间
+</code></pre>
+<pre class="highlight"><span class="line"></span><br><span class="line">![](https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230724142620.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre>
+<pre><code>                            ARM架构
+</code></pre>
+<pre class="highlight"><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 并发编程：从入门到放弃</span><br><span class="line"></span><br><span class="line">人类是 sequential creature</span><br><span class="line"></span><br><span class="line">- 编译优化 + weak memory model 导致难以理解的并发执行</span><br><span class="line">- 有多难理解呢？</span><br><span class="line">  - [Verifying sequential consistency 是 NP-完全问题](https://epubs.siam.org/doi/10.1137/S0097539794279614)</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">人类是 (不轻言放弃的) sequential creature</span><br><span class="line"></span><br><span class="line">- 有问题，就会试着去解决</span><br><span class="line"></span><br><span class="line">- 手段：</span><br><span class="line"></span><br><span class="line">  “回退到” 顺序执行</span><br><span class="line"></span><br><span class="line">  - 标记若干块代码，使得这些代码一定能按某个顺序执行</span><br><span class="line">  - 例如，我们可以安全地在块里记录执行的顺序</span><br><span class="line"></span><br><span class="line">顺序执行——————&gt;</span><br><span class="line"></span><br><span class="line">插入 “神秘代码”，使得所有其他 “神秘代码” 都不能并发</span><br><span class="line"></span><br><span class="line">- 由 “神秘代码” 领导不会并发的代码 (例如 pure functions) 执行</span><br><span class="line"></span><br></pre>
+<p>void Tsum() {<br>  stop_the_world();<br>  &#x2F;&#x2F; 临界区 critical section<br>  sum++;<br>  resume_the_world();<br>}</p>
+<pre class="highlight"><span class="line"></span><br><span class="line">并非所有块都需要 “stop_the_world”,否则那就和我们的初衷（利用多个线程加速问题处理）违背了。</span><br><span class="line"></span><br><span class="line">需要共享资源的块才需要 stop the world，类似于在访问后将资源锁死，防止其他块访问。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 失败的尝试</span><br><span class="line"></span><br></pre>
+<p>int locked &#x3D; UNLOCK;</p>
+<p>void critical_section() {<br>retry:<br>  if (locked !&#x3D; UNLOCK) {<br>    goto retry;<br>  }<br>  locked &#x3D; LOCK;</p>
+<p>  &#x2F;&#x2F; critical section</p>
+<p>  locked &#x3D; UNLOCK;<br>}</p>
+<pre class="highlight"><span class="line"></span><br><span class="line">和 “山寨支付宝” 完全一样的错误</span><br><span class="line"></span><br><span class="line">- 并发程序不能保证 load + store 的原子性</span><br><span class="line"></span><br><span class="line">即可能存在两个线程同时执行lock!=UNLOCK语句，一样存在冲突</span><br><span class="line"></span><br><span class="line">线程与线程之间互相看不到是否正在执行unlock操作，即原子性无法保证</span><br><span class="line"></span><br><span class="line">物理世界中，人去解锁一个门，门无法允许两个人去解锁，因为人很“大”</span><br><span class="line"></span><br><span class="line">###  更严肃地尝试：确定假设、设计算法</span><br><span class="line"></span><br><span class="line">假设：内存的读/写可以保证顺序、原子完成</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  val = atomic_load(ptr)</span><br></pre>
+
+<ul>
+<li><p>看一眼某个地方的字条 (只能看到瞬间的字)</p>
+</li>
+<li><p>刚看完就可能被改掉</p>
+</li>
+<li><p>&#96;&#96;&#96;<br>atomic_store(ptr, val)</p>
+<pre class="highlight"><span class="line"></span><br><span class="line">  - 对应往某个地方 “贴一张纸条” (必须闭眼盲贴)</span><br><span class="line">  - 贴完一瞬间就可能被别人覆盖</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">对应于 model checker</span><br><span class="line"></span><br><span class="line">- 每一行可以执行一次全局变量读或写</span><br><span class="line">- 每个操作执行之后都发生 `sys_sched()`</span><br><span class="line"></span><br><span class="line">## 正确性不明的奇怪尝试 (Peterson 算法)</span><br><span class="line"></span><br><span class="line">A 和 B 争用厕所的包厢</span><br><span class="line"></span><br><span class="line">- 想进入包厢之前，A/B 都首先举起自己的旗子</span><br><span class="line"></span><br><span class="line">  - A 往厕所门上贴上 “B 正在使用” 的标签</span><br><span class="line">  - B 往厕所门上贴上 “A 正在使用” 的标签</span><br><span class="line"></span><br><span class="line">- 然后，</span><br><span class="line"></span><br><span class="line">  如果对方举着旗，且门上的名字是对方</span><br><span class="line"></span><br><span class="line">  ，等待</span><br><span class="line"></span><br><span class="line">  - 否则可以进入包厢</span><br><span class="line"></span><br><span class="line">- 出包厢后，放下自己的旗子 (完全不管门上的标签)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 习题：证明 Peterson 算法正确，或给出反例</span><br><span class="line"></span><br><span class="line">进入临界区的情况</span><br><span class="line"></span><br><span class="line">- 如果只有一个人举旗，他就可以直接进入</span><br><span class="line">- 如果两个人同时举旗，由厕所门上的标签决定谁进</span><br><span class="line">  - 手快 🈶️ (被另一个人的标签覆盖)、手慢 🈚</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">一些具体的细节情况</span><br><span class="line"></span><br><span class="line">- A 看到 B 没有举旗</span><br><span class="line">  - B 一定不在临界区</span><br><span class="line">  - 或者 B 想进但还没来得及把 “A 正在使用” 贴在门上</span><br><span class="line">- A 看到 B 举旗子</span><br><span class="line">  - A 一定已经把旗子举起来了</span><br><span class="line">  - (*!@^#*&amp;!%^(&amp;^!@%#</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## “Push-button” Verification 🎖</span><br><span class="line"></span><br><span class="line">&gt; 我们 (在完全不理解算法的前提下) 证明了 Sequential 内存模型下 Peterson&#x27;s Protocol 的 Safety。它能够实现互斥。</span><br><span class="line"></span><br><span class="line">并发编程比大家想象得困难</span><br><span class="line"></span><br><span class="line">- 感受一下 [Dekker&#x27;s Algorithm](https://series1.github.io/blog/dekkers-algorithm/)</span><br><span class="line">- “[Myths about the mutual exclusion problem](https://zoo.cs.yale.edu/classes/cs323/doc/Peterson.pdf)” (IPL, 1981)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 自动遍历状态空间的乐趣</span><br><span class="line"></span><br><span class="line">可以帮助我们快速回答更多问题</span><br><span class="line"></span><br><span class="line">- 如果结束后把门上的字条撕掉，算法还正确吗？</span><br><span class="line">  - 在放下旗子之前撕</span><br><span class="line">  - 在放下旗子之后撕</span><br><span class="line">- 如果先贴标签再举旗，算法还正确吗？</span><br><span class="line">- 我们有两个 “查看” 的操作</span><br><span class="line">  - 看对方的旗有没有举起来</span><br><span class="line">  - 看门上的贴纸是不是自己</span><br><span class="line">  - 这两个操作的顺序影响算法的正确性吗？</span><br><span class="line">- 是否存在 “两个人谁都无法进入临界区” (liveness)、“对某一方不公平” (fairness) 等行为？</span><br><span class="line">  - 都转换成图 (状态空间) 上的遍历问题了！</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## Model Checker 和自动化</span><br><span class="line"></span><br><span class="line">电脑为什么叫 “电脑”</span><br><span class="line"></span><br><span class="line">- 就是因为它能替代部分人类的思维活动</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">回忆：每个班上都有一个笔记和草稿纸都工工整整的 Ta</span><br><span class="line"></span><br><span class="line">- 老师：布置作业画状态图</span><br><span class="line"></span><br><span class="line">  - Ta：认认真真默默画完</span><br><span class="line"></span><br><span class="line">    - 工整的笔记可以启发思维</span><br><span class="line">    - 但 scale out 非常困难</span><br><span class="line"></span><br><span class="line">  - 我：烦死了！劳资不干了！玩游戏去了！</span><br><span class="line"></span><br><span class="line">    - 计算思维</span><br><span class="line"></span><br><span class="line">      ：写个程序 (model checker) 来辅助</span><br><span class="line"></span><br><span class="line">      - 任何机械的思维活动都可以用计算机替代</span><br><span class="line">      - AI 还可以替代启发式/经验式的决策</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 从模型回到现实……</span><br><span class="line"></span><br><span class="line">回到我们的假设 (体现在模型)</span><br><span class="line"></span><br><span class="line">- Atomic load &amp; store</span><br><span class="line">  - 读/写单个全局变量是 “原子不可分割” 的</span><br><span class="line">  - 但这个假设在现代多处理器上并不成立</span><br><span class="line">- 所以实际上按照模型直接写 Peterson 算法应该是错的？</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">“实现正确的 Peterson 算法” 是合理需求，它一定能实现</span><br><span class="line"></span><br><span class="line">- Compiler barrier/volatile 保证不被优化的前提下</span><br><span class="line"></span><br><span class="line">  - 处理器提供特殊指令保证可见性</span><br><span class="line"></span><br><span class="line">  - 编译器提供</span><br><span class="line"></span><br></pre>
+<p>  __sync_synchronize()</p>
+  <pre class="highlight"><span class="line"></span><br><span class="line">    函数</span><br><span class="line"></span><br><span class="line">    - x86: `mfence`; ARM: `dmb ish`; RISC-V: `fence rw, rw`</span><br><span class="line">    - 同时含有一个 compiler barrier</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">如何验证peterson算法的正确性？</span><br><span class="line"></span><br><span class="line">回到“山寨支付宝”的尝试，如果你“stop_the_world”的尝试并不完美，会出现多个线程同时进入的情况，就可在这个执行过程中通过计数器来判断是否有这个情况发生，进而判断Peterson算法的正确性</span><br><span class="line"></span><br><span class="line">![](https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230724231619.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Peterson 算法：C 代码实现演示</span><br><span class="line"></span><br><span class="line">- 一些有趣的问题</span><br><span class="line">  - Compiler barrier 能够用吗？</span><br><span class="line">  - 哪些地方的 barrier 是不可少的？</span><br><span class="line">- 测试只能证明 “有问题”，不能证明 “没问题”</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">编译器到底做了什么？</span><br><span class="line"></span><br><span class="line">- 推荐：</span><br><span class="line"></span><br><span class="line">  godbolt.org</span><br><span class="line"></span><br><span class="line">  ，你不用装那些 cross compiler 了</span><br><span class="line"></span><br><span class="line">  - 你甚至可以看到 compiler barrier 是如何在优化中传递的</span><br><span class="line">    - 再一次：自动化 &amp; 可视化的意义</span><br><span class="line">  - 不懂可以把代码直接扔给 ChatGPT</span><br><span class="line"></span><br><span class="line">```c</span><br><span class="line">#include &quot;thread.h&quot;</span><br><span class="line"></span><br><span class="line">#define A 1</span><br><span class="line">#define B 2</span><br><span class="line"></span><br><span class="line">#define BARRIER __sync_synchronize()</span><br><span class="line"></span><br><span class="line">atomic_int nested;</span><br><span class="line">atomic_long count;</span><br><span class="line"></span><br><span class="line">void critical_section() &#123;</span><br><span class="line">  long cnt = atomic_fetch_add(&amp;count, 1);</span><br><span class="line">  int i = atomic_fetch_add(&amp;nested, 1) + 1;</span><br><span class="line">  if (i != 1) &#123;</span><br><span class="line">    printf(&quot;%d threads in the critical section @ count=%ld\n&quot;, i, cnt);</span><br><span class="line">    assert(0);</span><br><span class="line">  &#125;</span><br><span class="line">  atomic_fetch_add(&amp;nested, -1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int volatile x = 0, y = 0, turn;</span><br><span class="line"></span><br><span class="line">void TA() &#123;</span><br><span class="line">  while (1) &#123;</span><br><span class="line">    x = 1;                   BARRIER;</span><br><span class="line">    turn = B;                BARRIER; // &lt;- this is critcal for x86</span><br><span class="line">    while (1) &#123;</span><br><span class="line">      if (!y) break;         BARRIER;</span><br><span class="line">      if (turn != B) break;  BARRIER;</span><br><span class="line">    &#125;</span><br><span class="line">    critical_section();</span><br><span class="line">    x = 0;                   BARRIER;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void TB() &#123;</span><br><span class="line">  while (1) &#123;</span><br><span class="line">    y = 1;                   BARRIER;</span><br><span class="line">    turn = A;                BARRIER;</span><br><span class="line">    while (1) &#123;</span><br><span class="line">      if (!x) break;         BARRIER;</span><br><span class="line">      if (turn != A) break;  BARRIER;</span><br><span class="line">    &#125;</span><br><span class="line">    critical_section();</span><br><span class="line">    y = 0;                   BARRIER;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  create(TA);</span><br><span class="line">  create(TB);</span><br><span class="line">&#125;</span><br></pre></li>
+</ul>
+<p>__sync_synchronize();</p>
+<p><a target="_blank" rel="noopener" href="https://godbolt.org/">https://godbolt.org/</a></p>
+<pre class="highlight"><span class="line">foo():</span><br><span class="line">        push    rbp</span><br><span class="line">        mov     rbp, rsp</span><br><span class="line">        lock or QWORD PTR [rsp], 0</span><br><span class="line">        nop</span><br><span class="line">        pop     rbp</span><br><span class="line">        ret</span><br></pre>
+
+
+
+<p>Peterson算法的实现原理： 内存的读\写是原子不可分割的，但在现代多处理结构上并不成立</p>
+<p>原子指令：</p>
+<p>普通的变量读写在编译器+处理器的双重优化下行为变得复杂</p>
+<p>在计算机世界的多线程处理中，变量读写随时有可能会被打断，而非物理世界的一致与连贯（单线程）。</p>
+<p>解决方法：编译器和硬件共同提供不可优化、不可打断的指令</p>
+<ul>
+<li>“原子指令” + compiler barrier</li>
+</ul>
+<h2 id="实现正确的求和"><a href="#实现正确的求和" class="headerlink" title="实现正确的求和"></a>实现正确的求和</h2><pre class="highlight"><span class="line">for (int i = 0; i &lt; N; i++)</span><br><span class="line">  asm volatile(&quot;lock incq %0&quot; : &quot;+m&quot;(sum));</span><br></pre>
+
+<p>“Bus lock”——从 80386 开始引入 (bus control signal)</p>
+<p>”总线锁“</p>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230724235431.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230724235431.png"></p>
+<p>原子指令：将世界分割成停止与不停止的两部分，停止的时间只有他能访问这一块内存</p>
+<pre class="highlight"><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;thread.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 100000000</span></span><br><span class="line"></span><br><span class="line"><span class="type">long</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">atomic_inc</span><span class="params">(<span class="type">long</span> *ptr)</span> &#123;</span><br><span class="line">  <span class="keyword">asm</span> <span class="title function_">volatile</span><span class="params">(</span></span><br><span class="line"><span class="params">    <span class="string">&quot;lock incq %0&quot;</span>  <span class="comment">// Atomic + memory fence</span></span></span><br><span class="line"><span class="params">    : <span class="string">&quot;+m&quot;</span>(*ptr)</span></span><br><span class="line"><span class="params">    :</span></span><br><span class="line"><span class="params">    : <span class="string">&quot;memory&quot;</span></span></span><br><span class="line"><span class="params">  )</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Tsum</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">    <span class="type">atomic_inc</span>(&amp;sum);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  create(Tsum);</span><br><span class="line">  create(Tsum);</span><br><span class="line">  join();</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;sum = %ld\n&quot;</span>, sum);</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+
+
+
+
+<h2 id="互斥问题：定义"><a href="#互斥问题：定义" class="headerlink" title="互斥问题：定义"></a>互斥问题：定义</h2><p>互斥 (mutual exclusion)，“互相排斥”</p>
+<ul>
+<li>实现 <code>lock_t</code> 数据结构和 <code>lock/unlock</code> API:</li>
+</ul>
+<pre class="highlight"><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125; <span class="type">lock_t</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">lock</span><span class="params">(<span class="type">lock_t</span> *lk)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">unlock</span><span class="params">(<span class="type">lock_t</span> *lk)</span>;</span><br></pre>
+
+<hr>
+<p>一把 “排他性” 的锁——对于锁对象 <code>lk</code></p>
+<ul>
+<li>如果某个线程持有锁，则其他线程的 <code>lock</code> 不能返回 (Safety)</li>
+<li>在多个线程执行 <code>lock</code> 时，至少有一个可以返回 (Liveness)</li>
+<li>能正确处理处理器乱序、宽松内存模型和编译优化</li>
+</ul>
+<h2 id="互斥问题的经典算法"><a href="#互斥问题的经典算法" class="headerlink" title="互斥问题的经典算法"></a>互斥问题的经典算法</h2><p>Peterson 算法</p>
+<ul>
+<li>包间、旗子和门上的字条</li>
+<li>假设 atomic load&#x2F;store<ul>
+<li>实现这个假设也不是非常容易的 (<a target="_blank" rel="noopener" href="https://jyywiki.cn/pages/OS/2023/c/peterson.c">peterson.c</a>)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>因此，假设很重要</p>
+<ul>
+<li>不能同时读&#x2F;写共享内存 (1960s) 不是一个好的假设<ul>
+<li>Load (环顾四周) 的时候不能写，“看一眼就把眼睛闭上”</li>
+<li>Store (改变物理世界状态) 的时候不能读，“闭着眼睛动手”</li>
+<li>这是《操作系统》课<ul>
+<li>更喜欢直观、简单、粗暴 (稳定)、有效的解决方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="实现互斥的基本假设"><a href="#实现互斥的基本假设" class="headerlink" title="实现互斥的基本假设"></a>实现互斥的基本假设</h2><p>允许使用使我们可以不管一切麻烦事的原子指令</p>
+<pre class="highlight"><span class="line"><span class="type">void</span> <span class="title function_">atomic_inc</span><span class="params">(<span class="type">long</span> *ptr)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">atomic_xchg</span><span class="params">(<span class="type">int</span> val, <span class="type">int</span> *ptr)</span>;</span><br></pre>
+
+<hr>
+<p>看起来是一个普通的函数，但假设：</p>
+<ul>
+<li>包含一个原子指令<ul>
+<li>指令的执行不能被打断</li>
+</ul>
+</li>
+<li>包含一个 compiler barrier<ul>
+<li>无论何种优化都不可越过此函数</li>
+</ul>
+</li>
+<li>包含一个 memory fence<ul>
+<li>保证处理器在 stop-the-world 前所有对内存的 store 都 “生效”</li>
+<li>即对 resume-the-world 之后的 load 可见</li>
+</ul>
+</li>
+</ul>
+<h2 id="Atomic-Exchange-实现"><a href="#Atomic-Exchange-实现" class="headerlink" title="Atomic Exchange 实现"></a>Atomic Exchange 实现</h2><pre class="highlight"><span class="line"><span class="type">int</span> <span class="title function_">xchg</span><span class="params">(<span class="type">int</span> <span class="keyword">volatile</span> *ptr, <span class="type">int</span> newval)</span> &#123;</span><br><span class="line">  <span class="type">int</span> result;</span><br><span class="line">  <span class="keyword">asm</span> <span class="title function_">volatile</span><span class="params">(</span></span><br><span class="line"><span class="params">    <span class="comment">// 指令自带 memory barrier</span></span></span><br><span class="line"><span class="params">    <span class="string">&quot;lock xchgl %0, %1&quot;</span></span></span><br><span class="line"><span class="params">    : <span class="string">&quot;+m&quot;</span>(*ptr), <span class="string">&quot;=a&quot;</span>(result)</span></span><br><span class="line"><span class="params">    : <span class="string">&quot;1&quot;</span>(newval)</span></span><br><span class="line"><span class="params">    <span class="comment">// Compiler barrier</span></span></span><br><span class="line"><span class="params">    : <span class="string">&quot;memory&quot;</span></span></span><br><span class="line"><span class="params">  )</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre>
+
+<p>&#x2F;&#x2F;不用太在意这个实现，实在是好难懂…</p>
+<p>memory-&gt; compile barrier</p>
+<p>lock       -&gt; memory barrier</p>
+<p>&#x2F;&#x2F;OSTEP上的C伪代码</p>
+<pre class="highlight"><span class="line"><span class="type">int</span> <span class="title function_">TestAndSet</span><span class="params">(<span class="type">int</span> *old_ptr, <span class="type">int</span> new)</span> &#123;</span><br><span class="line"><span class="type">int</span> old = *old_ptr; <span class="comment">// fetch old value at old_ptr</span></span><br><span class="line">*old_ptr = new; <span class="comment">// store &#x27;new&#x27; into old_ptr</span></span><br><span class="line"><span class="keyword">return</span> old; <span class="comment">// return the old value</span></span><br><span class="line">&#125;</span><br></pre>
+
+<p>获取值，存储，返回旧值</p>
+<pre class="highlight"><span class="line"><span class="comment">//比较显而易见的实现自旋锁锁的lock和unlock函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">lock</span><span class="params">(<span class="type">lock_t</span> *lock)</span> &#123;</span><br><span class="line"> <span class="keyword">while</span> (TestAndSet(&amp;lock-&gt;flag, <span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line"> ; <span class="comment">// spin-wait (do nothing)</span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="type">void</span> <span class="title function_">unlock</span><span class="params">(<span class="type">lock_t</span> *lock)</span> &#123;</span><br><span class="line"> lock-&gt;flag = <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre>
+
+<pre class="highlight"><span class="line"><span class="comment">//首先假设一个线程在运行，调用lock()，没有其他线程持有锁，所以flag 是0。当调用TestAndSet(flag, 1)方法，返回0，线程会跳出while循环，获取锁。同时也会原子的设置flag 为1，标志锁已经被持有。当线程离开临界区，调用unlock()将flag 清理为0。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//第二种场景是，当某一个线程已经持有锁（即flag 为1）。本线程调用lock()，然后调用TestAndSet(flag, 1)，这一次返回1。只要另一个线程一直持有锁，TestAndSet()会重复返回1，本线程会一直自旋。当flag 终于被改为0，本线程会调用TestAndSet()，返回0 并且原子地设置为1，从而获得锁，进入临界区。</span></span><br></pre>
+
+
+
+<h2 id="实现互斥：做题家-v-s-科学家"><a href="#实现互斥：做题家-v-s-科学家" class="headerlink" title="实现互斥：做题家 v.s. 科学家"></a>实现互斥：做题家 v.s. 科学家</h2><pre class="highlight"><span class="line">void lock(lock_t *lk);</span><br><span class="line">void unlock(lock_t *lk);</span><br></pre>
+
+<p>做题家：拿到题就开始排列组合</p>
+<ul>
+<li>熟练得让人心疼<ul>
+<li>如果长久的训练都是 “必须在规定的时间内正确解出问题”，那么浪费时间的思考自然就少了</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>科学家：考虑更多更根本的问题</p>
+<ul>
+<li>我们可以设计出怎样的原子指令？<ul>
+<li>它们的表达能力如何？</li>
+</ul>
+</li>
+<li>计算机硬件可以提供比 “一次 load&#x2F;store” 更强的原子性吗？<ul>
+<li>如果硬件很困难，软件&#x2F;编译器可以么？</li>
+</ul>
+</li>
+</ul>
+<h2 id="实现互斥：自旋锁"><a href="#实现互斥：自旋锁" class="headerlink" title="实现互斥：自旋锁"></a>实现互斥：自旋锁</h2><pre class="highlight"><span class="line">int table = YES;</span><br><span class="line"></span><br><span class="line">void lock() &#123;</span><br><span class="line">retry:</span><br><span class="line">  int got = xchg(&amp;table, NOPE);</span><br><span class="line">  if (got == NOPE)</span><br><span class="line">    goto retry;</span><br><span class="line">  assert(got == YES);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void unlock() &#123;</span><br><span class="line">  xchg(&amp;table, YES);  // 为什么不是 table = YES; ?</span><br><span class="line">&#125;</span><br></pre>
+
+<p>(在 model checker 中检查)</p>
+<p>1、若在lock和unlock的过程中，线程crash了，那么YES就永远消失了，线程就发生了死锁</p>
+<p>trick：c++的析构函数可以做到构造时上锁，退出时去锁，能够一定程度上避免在lock和unlock时不甚写了return语句造成线程死锁（return时线程结束，自动调用析构函数）</p>
+<p>2、table &#x3D; YES？ 为了防止自动优化和某些奇怪的“bug”，最保险以及最安全的方法还是调用unlock语句</p>
+<h2 id="实现互斥：自旋锁-1"><a href="#实现互斥：自旋锁-1" class="headerlink" title="实现互斥：自旋锁"></a>实现互斥：自旋锁</h2><p>在 xchg 的假设下简化实现</p>
+<ul>
+<li>包含一个原子指令</li>
+<li>包含一个 compiler barrier</li>
+<li>包含一个 memory fence<ul>
+<li>sum-spinlock demo</li>
+</ul>
+</li>
+</ul>
+<pre class="highlight"><span class="line">int locked = 0;</span><br><span class="line"></span><br><span class="line">void lock() &#123;</span><br><span class="line">  while (xchg(&amp;locked, 1));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void unlock() &#123;</span><br><span class="line">  xchg(&amp;locked, 0);</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>回到累加</p>
+<pre class="highlight"><span class="line">#include &quot;thread.h&quot;</span><br><span class="line"></span><br><span class="line">#define N 100000000</span><br><span class="line">#define M 10</span><br><span class="line"></span><br><span class="line">long sum = 0;</span><br><span class="line"></span><br><span class="line">int xchg(int volatile *ptr, int newval) &#123;</span><br><span class="line">  int result;</span><br><span class="line">  asm volatile(</span><br><span class="line">    &quot;lock xchgl %0, %1&quot;</span><br><span class="line">    : &quot;+m&quot;(*ptr), &quot;=a&quot;(result)</span><br><span class="line">    : &quot;1&quot;(newval)</span><br><span class="line">    : &quot;memory&quot;</span><br><span class="line">  );</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int locked = 0;</span><br><span class="line"></span><br><span class="line">void lock() &#123;</span><br><span class="line">  while (xchg(&amp;locked, 1)) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void unlock() &#123;</span><br><span class="line">  xchg(&amp;locked, 0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Tsum() &#123;</span><br><span class="line">  long nround = N / M;</span><br><span class="line">  for (int i = 0; i &lt; nround; i++) &#123;</span><br><span class="line">    lock();</span><br><span class="line">    for (int j = 0; j &lt; M; j++) &#123;</span><br><span class="line">      sum++;  // Non-atomic; can optimize</span><br><span class="line">    &#125;</span><br><span class="line">    unlock();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  assert(N % M == 0);</span><br><span class="line">  create(Tsum);</span><br><span class="line">  create(Tsum);</span><br><span class="line">  join();</span><br><span class="line">  printf(&quot;sum = %ld\n&quot;, sum);</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<h2 id="更强大的原子指令"><a href="#更强大的原子指令" class="headerlink" title="更强大的原子指令"></a>更强大的原子指令</h2><p>Compare and exchange (“test and set”)</p>
+<ul>
+<li>(lock) cmpxchg SRC, DEST</li>
+</ul>
+<pre class="highlight"><span class="line">TEMP = DEST</span><br><span class="line">if accumulator == TEMP:</span><br><span class="line">    ZF = 1</span><br><span class="line">    DEST = SRC</span><br><span class="line">else:</span><br><span class="line">    ZF = 0</span><br><span class="line">    accumulator = TEMP</span><br></pre>
+
+<ul>
+<li>🤔 看起来没复杂多少，好像又复杂了很多<ul>
+<li>学编程&#x2F;操作系统 “纸面理解” 是不行的</li>
+<li>一定要写代码加深印象<ul>
+<li>对于这个例子：我们可以列出 “真值表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>&#x2F;&#x2F;OSTEP C的伪代码</p>
+<pre class="highlight"><span class="line"> <span class="type">int</span> <span class="title function_">CompareAndSwap</span><span class="params">(<span class="type">int</span> *ptr, <span class="type">int</span> expected, <span class="type">int</span> new)</span> &#123;</span><br><span class="line"> <span class="type">int</span> actual = *ptr;</span><br><span class="line"> <span class="keyword">if</span> (actual == expected)</span><br><span class="line"> *ptr = new;</span><br><span class="line"> <span class="keyword">return</span> actual;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">// *注意，称为伪代码的意思是它并不能实现真正的硬件效果，因为每一步在实际执行时并非原子指令</span></span><br><span class="line"><span class="comment">// 在真正使用cmpxchg时，每一步都是原子指令，即使用lock和memory保证compiler和memory barrier</span></span><br><span class="line"> </span><br></pre>
+
+<pre class="highlight"><span class="line"> <span class="type">void</span> <span class="title function_">lock</span><span class="params">(<span class="type">lock_t</span> *lock)</span> &#123;</span><br><span class="line"> <span class="keyword">while</span> (CompareAndSwap(&amp;lock-&gt;flag, <span class="number">0</span>, <span class="number">1</span>) == <span class="number">1</span>)</span><br><span class="line"> ; <span class="comment">// spin</span></span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//lock函数</span></span><br></pre>
+
+<p>比起xchg，cmpxchg少了一次store，多了一次判断</p>
+<h2 id="多出的-Compare-用处"><a href="#多出的-Compare-用处" class="headerlink" title="多出的 Compare: 用处"></a>多出的 Compare: 用处</h2><p>同时检查上一次获得的值是否仍然有效 + 修改生效</p>
+<pre class="highlight"><span class="line">// Create a new node</span><br><span class="line">retry:</span><br><span class="line">  expected = head;</span><br><span class="line">  node-&gt;next = expected;</span><br><span class="line">  seen = cmpxchg(expected, node, &amp;head);</span><br><span class="line">  if (seen != expected)</span><br><span class="line">    goto retry;</span><br></pre>
+
+
+
+
+
+<h2 id="自旋锁的缺陷"><a href="#自旋锁的缺陷" class="headerlink" title="自旋锁的缺陷"></a>自旋锁的缺陷</h2><p>性能问题 (1)</p>
+<ul>
+<li>除了进入临界区的线程，其他处理器上的线程都在空转</li>
+<li>争抢锁的处理器越多，利用率越低<ul>
+<li>4 个 CPU 运行 4 个 sum-spinlock 和 1 个 OBS<ul>
+<li>任意时刻都只有一个 sum-atomic 在有效计算</li>
+</ul>
+</li>
+<li>均分 CPU, OBS 就分不到 100% 的 CPU 了</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>性能问题 (2)</p>
+<ul>
+<li><p>持有自旋锁的线程</p>
+<p>可能被操作系统切换出去</p>
+<ul>
+<li>操作系统不 “感知” 线程在做什么</li>
+<li>(但为什么不能呢？)</li>
+</ul>
+</li>
+<li><p>实现 100% 的资源浪费</p>
+</li>
+</ul>
+<h2 id="Scalability-性能的新维度"><a href="#Scalability-性能的新维度" class="headerlink" title="Scalability: 性能的新维度"></a>Scalability: 性能的新维度</h2><blockquote>
+<p>同一份计算任务，时间 (CPU cycles) 和空间 (mapped memory) 会随处理器数量的增长而变化。</p>
+</blockquote>
+<p>用自旋锁实现 sum++ 的性能问题</p>
+<ul>
+<li>严谨的统计很难<ul>
+<li>CPU 动态功耗</li>
+<li>系统中的其他进程</li>
+<li>超线程</li>
+<li>NUMA</li>
+<li>……</li>
+<li><a target="_blank" rel="noopener" href="https://www.cse.unsw.edu.au/~gernot/benchmarking-crimes.html">Benchmarking crimes</a></li>
+</ul>
+</li>
+</ul>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230726225413.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230726225413.png"></p>
+<p>sum-scalability</p>
+<pre class="highlight"><span class="line">#include &quot;thread.h&quot;</span><br><span class="line">#include &quot;thread-sync.h&quot;</span><br><span class="line"></span><br><span class="line">#define N 10000000</span><br><span class="line">spinlock_t lock = SPIN_INIT();</span><br><span class="line"></span><br><span class="line">long n, sum = 0;</span><br><span class="line"></span><br><span class="line">void Tsum() &#123;</span><br><span class="line">  for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">    spin_lock(&amp;lock);</span><br><span class="line">    sum++;</span><br><span class="line">    spin_unlock(&amp;lock);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">  assert(argc == 2);</span><br><span class="line">  int nthread = atoi(argv[1]);</span><br><span class="line">  n = N / nthread;</span><br><span class="line">  for (int i = 0; i &lt; nthread; i++) &#123;</span><br><span class="line">    create(Tsum);</span><br><span class="line">  &#125;</span><br><span class="line">  join();</span><br><span class="line">  assert(sum == n * nthread);</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>thread-sync.h</p>
+<pre class="highlight"><span class="line">#include &lt;semaphore.h&gt;</span><br><span class="line"></span><br><span class="line">// Spinlock</span><br><span class="line">typedef int spinlock_t;</span><br><span class="line">#define SPIN_INIT() 0</span><br><span class="line"></span><br><span class="line">static inline int atomic_xchg(volatile int *addr, int newval) &#123;</span><br><span class="line">  int result;</span><br><span class="line">  asm volatile (&quot;lock xchg %0, %1&quot;:</span><br><span class="line">    &quot;+m&quot;(*addr), &quot;=a&quot;(result) : &quot;1&quot;(newval) : &quot;memory&quot;);</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void spin_lock(spinlock_t *lk) &#123;</span><br><span class="line">  while (1) &#123;</span><br><span class="line">    intptr_t value = atomic_xchg(lk, 1);</span><br><span class="line">    if (value == 0) &#123;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">void spin_unlock(spinlock_t *lk) &#123;</span><br><span class="line">  atomic_xchg(lk, 0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Mutex</span><br><span class="line">typedef pthread_mutex_t mutex_t;</span><br><span class="line">#define MUTEX_INIT() PTHREAD_MUTEX_INITIALIZER</span><br><span class="line">void mutex_lock(mutex_t *lk)   &#123; pthread_mutex_lock(lk); &#125;</span><br><span class="line">void mutex_unlock(mutex_t *lk) &#123; pthread_mutex_unlock(lk); &#125;</span><br><span class="line"></span><br><span class="line">// Conditional Variable</span><br><span class="line">typedef pthread_cond_t cond_t;</span><br><span class="line">#define COND_INIT() PTHREAD_COND_INITIALIZER</span><br><span class="line">#define cond_wait pthread_cond_wait</span><br><span class="line">#define cond_broadcast pthread_cond_broadcast</span><br><span class="line">#define cond_signal pthread_cond_signal</span><br><span class="line"></span><br><span class="line">// Semaphore</span><br><span class="line">#define P sem_wait</span><br><span class="line">#define V sem_post</span><br><span class="line">#define SEM_INIT(sem, val) sem_init(sem, 0, val)</span><br></pre>
+
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230726225641.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230726225641.png"></p>
+<h2 id="自旋锁的使用场景"><a href="#自旋锁的使用场景" class="headerlink" title="自旋锁的使用场景"></a>自旋锁的使用场景</h2><ol>
+<li>临界区几乎不 “拥堵”</li>
+<li>持有自旋锁时禁止执行流切换</li>
+</ol>
+<hr>
+<p>使用场景：操作系统内核的并发数据结构 (短临界区)</p>
+<ul>
+<li>操作系统可以关闭中断和抢占<ul>
+<li>保证锁的持有者在很短的时间内可以释放锁</li>
+</ul>
+</li>
+<li>(如果是虚拟机呢…😂)<ul>
+<li>PAUSE 指令会触发 VM Exit</li>
+</ul>
+</li>
+<li>但依旧很难做好<ul>
+<li><a target="_blank" rel="noopener" href="https://www.usenix.org/conference/osdi10/analysis-linux-scalability-many-cores">An analysis of Linux scalability to many cores</a> (OSDI’10)</li>
+</ul>
+</li>
+</ul>
+<h2 id="实现线程-长临界区的互斥"><a href="#实现线程-长临界区的互斥" class="headerlink" title="实现线程 + 长临界区的互斥"></a>实现线程 + 长临界区的互斥</h2><blockquote>
+<p>作业那么多，与其干等 Online Judge 发布，不如把自己 (CPU) 让给其他作业 (线程) 执行？</p>
+</blockquote>
+<p>“让” 不是 C 语言代码可以做到的 (C 代码只能执行指令)</p>
+<ul>
+<li><p>但有一种特殊的指令：syscall</p>
+</li>
+<li><p>把锁的实现放到操作系统里就好啦</p>
+<ul>
+<li>&#96;&#96;&#96;<br>syscall(SYSCALL_lock, &amp;lk);<pre class="highlight"><span class="line"></span><br><span class="line">  - 试图获得 `lk`，但如果失败，就切换到其他线程</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  syscall(SYSCALL_unlock, &amp;lk);</span><br></pre>
+
+<ul>
+<li>释放 <code>lk</code>，如果有等待锁的线程就唤醒</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>得不到锁时，不浪费CPU</p>
+<h2 id="实现线程-长临界区的互斥-cont’d"><a href="#实现线程-长临界区的互斥-cont’d" class="headerlink" title="实现线程 + 长临界区的互斥 (cont’d)"></a>实现线程 + 长临界区的互斥 (cont’d)</h2><p>操作系统 &#x3D; 更衣室管理员</p>
+<ul>
+<li>先到的人 (线程)<ul>
+<li>成功获得手环，进入游泳馆</li>
+<li><code>*lk = 🔒</code>，系统调用直接返回</li>
+</ul>
+</li>
+<li>后到的人 (线程)<ul>
+<li>不能进入游泳馆，排队等待</li>
+<li>线程放入等待队列，执行线程切换 (yield)</li>
+</ul>
+</li>
+<li>洗完澡出来的人 (线程)<ul>
+<li>交还手环给管理员；管理员把手环再交给排队的人</li>
+<li>如果等待队列不空，从等待队列中取出一个线程允许执行</li>
+<li>如果等待队列为空，<code>*lk = ✅</code></li>
+</ul>
+</li>
+<li>管理员 (OS) 使用自旋锁确保自己处理手环的过程是原子的</li>
+</ul>
+<h2 id="关于互斥的一些分析"><a href="#关于互斥的一些分析" class="headerlink" title="关于互斥的一些分析"></a>关于互斥的一些分析</h2><p>自旋锁 (线程直接共享 locked)</p>
+<ul>
+<li>更快的 fast path<ul>
+<li>xchg 成功 → 立即进入临界区，开销很小</li>
+</ul>
+</li>
+<li>更慢的 slow path<ul>
+<li>xchg 失败 → 浪费 CPU 自旋等待</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>互斥锁 (通过系统调用访问 locked)</p>
+<ul>
+<li>更经济的 slow path<ul>
+<li>上锁失败线程不再占用 CPU</li>
+</ul>
+</li>
+<li>更慢的 fast path<ul>
+<li>即便上锁成功也需要进出内核 (syscall)</li>
+</ul>
+</li>
+</ul>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230726235931.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230726235931.png"></p>
+<h2 id="开始调试之前"><a href="#开始调试之前" class="headerlink" title="开始调试之前"></a>开始调试之前</h2><p>摆正心态 (编程哲 ♂ 学)</p>
+<p>机器永远是对的</p>
+<blockquote>
+<p>不管是 crash 了，Wrong Answer 了，还是虚拟机神秘重启，都是自己背锅</p>
+</blockquote>
+<p>未测代码永远是错的</p>
+<blockquote>
+<p>你以为最不可能出 bug 的地方，往往 bug 就在那躺着</p>
+</blockquote>
+<p>“软件” 的两层含义</p>
+<ul>
+<li>人类需求在信息世界的投影<ul>
+<li>理解错需求 → bug</li>
+</ul>
+</li>
+<li>计算过程的精确 (数学) 描述<ul>
+<li>实现错误 → bug</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>调试 (debugging)</p>
+<ul>
+<li>已知程序有 bug，如何找到？</li>
+</ul>
+<h2 id="调试困难的根本原因"><a href="#调试困难的根本原因" class="headerlink" title="调试困难的根本原因"></a>调试困难的根本原因</h2><p>因为 bug 的触发经历了漫长的过程</p>
+<ul>
+<li>需求 → 设计 → 代码 (状态机) → Fault (bug) → Error (程序状态错) → Failure<ul>
+<li>我们只能观测到 failure (可观测的结果错)</li>
+<li>我们可以检查状态的正确性 (但非常费时)</li>
+<li>无法预知 bug 在哪里 (每一行 “看起来” 都挺对的)</li>
+</ul>
+</li>
+</ul>
+<h2 id="调试理论"><a href="#调试理论" class="headerlink" title="调试理论"></a>调试理论</h2><blockquote>
+<p>调试理论：如果我们能判定任意程序状态的正确性，那么给定一个 failure，我们可以通过二分查找定位到第一个 error 的状态，此时的代码就是 fault (bug)。</p>
+</blockquote>
+<hr>
+<p>调试理论：推论</p>
+<ul>
+<li>为什么我们喜欢 “单步调试”？<ul>
+<li>从一个假定正确的状态出发</li>
+<li>每个语句的行为有限，容易判定是否是 error</li>
+</ul>
+</li>
+<li>为什么调试理论看起来很没用？<ul>
+<li>因为判定程序状态的正确性非常困难<ul>
+<li>(是否在调试 DP 题&#x2F;图论算法时陷入时间黑洞？)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230728004530.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230728004530.png"></p>
+<h2 id="调试理论-cont’d"><a href="#调试理论-cont’d" class="headerlink" title="调试理论 (cont’d)"></a>调试理论 (cont’d)</h2><p>实际中的调试：观察状态机执行 (trace) 的某个侧面</p>
+<ul>
+<li>缩小错误状态 (error) 可能产生的位置</li>
+<li>作出适当的假设</li>
+<li>再进行细粒度的定位和诊断</li>
+</ul>
+<hr>
+<p>最重要的两个工具</p>
+<ul>
+<li>printf → 自定义 log 的 trace<ul>
+<li>灵活可控、能快速定位问题大概位置、适用于大型软件</li>
+<li>无法精确定位、大量的 logs 管理起来比较麻烦</li>
+</ul>
+</li>
+<li>gdb → 指令&#x2F;语句级 trace<ul>
+<li>精确、指令级定位、任意查看程序内部状态</li>
+<li>耗费大量时间</li>
+</ul>
+</li>
+</ul>
+<h2 id="你们是否遇到过以下令人抓狂的情况？"><a href="#你们是否遇到过以下令人抓狂的情况？" class="headerlink" title="你们是否遇到过以下令人抓狂的情况？"></a>你们是否遇到过以下令人抓狂的情况？</h2><pre class="highlight"><span class="line">bash: curl: command not found</span><br></pre>
+
+<hr>
+<pre class="highlight"><span class="line">fatal error: &#x27;sys/cdefs.h&#x27;: No such file or directory</span><br><span class="line">#include &lt;sys/cdefs.h&gt;</span><br></pre>
+
+<hr>
+<pre class="highlight"><span class="line">make[2]: *** run: No such file or directory.  Stop.</span><br><span class="line">Makefile:31: recipe for target &#x27;run&#x27; failed</span><br><span class="line">make[1]: *** [run] Error 2</span><br><span class="line">...</span><br></pre>
+
+
+
+
+
+<h2 id="计算机世界：一切皆可调试"><a href="#计算机世界：一切皆可调试" class="headerlink" title="计算机世界：一切皆可调试"></a>计算机世界：一切皆可调试</h2><p>程序 &#x3D; 计算机系统 &#x3D; 状态机</p>
+<ul>
+<li><p>机器永远是对的</p>
+</li>
+<li><p>UNIX 世界里你做任何事情都是在</p>
+<p>编程</p>
+<ul>
+<li>因此配置错、make 错等，都是程序或输入&#x2F;配置有 bug</li>
+<li>(输入&#x2F;配置可以看成是程序的一部分)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>所有问题都可以用调试理论解决</p>
+<ul>
+<li>你写了一个程序，现在这个程序出 bug 了 (例如 Segmentation Fault)，你是怎样排查这个问题的？<ul>
+<li>curl: command not found</li>
+<li><code>&#39;sys/cdefs.h&#39;</code>: No such file or directory</li>
+<li>make: run: No such file or directory</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用调试理论"><a href="#使用调试理论" class="headerlink" title="使用调试理论"></a>使用调试理论</h2><p>Debug (fault localization) 的基本理论回顾：</p>
+<ul>
+<li>Fault (程序&#x2F;输入&#x2F;配置错) → Error → Failure (可观测)<ul>
+<li>绝大部分工具的 Failure 都有 “原因报告”<ul>
+<li>因此能帮助你快速定位 fault</li>
+</ul>
+</li>
+<li><code>man perror</code>：标准库有打印 error message 的函数</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>如果问题不能帮你定位到 fault&#x2F;error？</p>
+<ul>
+<li>出错原因报告不准确或不够详细</li>
+<li>程序执行的过程不够详细<ul>
+<li>既然我们有需求，那别人肯定也会有这个需求<ul>
+<li>一定有信息能帮助我们！</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>UNIX–&gt; 标准输出和标准错误输出</p>
+<h2 id="GDB-入门"><a href="#GDB-入门" class="headerlink" title="GDB: 入门"></a>GDB: 入门</h2><p>GDB: 最常用的命令在 <a target="_blank" rel="noopener" href="https://jyywiki.cn/pages/OS/manuals/gdb-cheat-sheet.pdf">gdb cheat sheet</a></p>
+<ul>
+<li>打印贴在电脑前，调试时候看一遍，很快就大致记住了</li>
+</ul>
+<hr>
+<p>想要更好的体验？</p>
+<ul>
+<li>GDB 本身也是一个编程语言<ul>
+<li>它甚至支持 Python</li>
+<li>我们可以执行一些初始化代码 (-x)</li>
+</ul>
+</li>
+<li>库函数也是代码<ul>
+<li>directory 命令增加源码路径</li>
+</ul>
+</li>
+<li>GDB 有许多前端<ul>
+<li>cgdb, pwndbg, vscode, …</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/">RTFM</a> - M 比 ChatGPT 好用在于它不需要 prompt 且全面</li>
+</ul>
+<blockquote>
+<p>printf 是我们最早接触的库函数之一。那么在 glibc 中的 printf 代码到底做了什么呢？在这个例子中，我们会发现 “production” 的代码经过多年的积累演化，已经非常复杂。因此我们的学习路径是让大家实现简化的版本 (klib)，并且鼓励大家阅读一些更轻量级的 libc 代码 (例如 <a target="_blank" rel="noopener" href="https://musl.libc.org/">musl</a>, newlib 等)。很多开源操作系统都选择了 musl 作为应用程序的支撑平台：它功能全面、精巧，且<a target="_blank" rel="noopener" href="https://musl.libc.org/doc/1.1.24/manual.html">移植</a>它的困难比 glibc 小得多</p>
+</blockquote>
+<p>gcc -ggdb -Wall .c</p>
+<p>gdb .o</p>
+<p>layout src</p>
+<p>record full</p>
+<p>si，rsi</p>
+<p>info thread</p>
+<p>thread</p>
+<h2 id="调试理论：应用-Again"><a href="#调试理论：应用-Again" class="headerlink" title="调试理论：应用 (Again)"></a>调试理论：应用 (Again)</h2><p>需求 → 设计 → 代码 → Fault → Error → Failure</p>
+<hr>
+<p>“Technical Debt”</p>
+<blockquote>
+<p>每当你写出不好维护的代码，你都在给你未来的调试&#x2F;需求变更挖坑。</p>
+</blockquote>
+<hr>
+<p>中枪了？</p>
+<ul>
+<li>为了快点跑程序，随便写的 klib</li>
+<li>为了赶紧实现指令，随手写的代码</li>
+<li>为了应付老板，随便写的系统实现<ul>
+<li>jyy 的 code review: <del>日常血压升高时间</del></li>
+</ul>
+</li>
+</ul>
+<h2 id="编程基本准则：回顾"><a href="#编程基本准则：回顾" class="headerlink" title="编程基本准则：回顾"></a>编程基本准则：回顾</h2><blockquote>
+<p>Programs are meant to be read by humans (AIs) and only incidentally for computers to execute. — <em>D. E. Knuth</em></p>
+<p>(程序首先是拿给人读的，其次才是被机器执行。)</p>
+</blockquote>
+<p>好的程序</p>
+<ul>
+<li>不言自明：能知道是做什么的 (specification)<ul>
+<li>因此代码风格很重要</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>不言自证：能确认代码和 specification 一致<ul>
+<li>因此代码中的逻辑流很重要</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>人类新纪元的评判标准<ul>
+<li>AI 是否能正确理解&#x2F;维护你的代码</li>
+</ul>
+</li>
+</ul>
+<h2 id="调试理论的最重要应用"><a href="#调试理论的最重要应用" class="headerlink" title="调试理论的最重要应用"></a>调试理论的最重要应用</h2><blockquote>
+<p>写好读、易验证的代码</p>
+<p>在代码中添加更多的断言 (assertions)</p>
+</blockquote>
+<hr>
+<p>断言的意义</p>
+<ul>
+<li>把代码中隐藏的 specification 写出来<ul>
+<li>Fault → Error (靠测试)</li>
+<li>Error → Failure (靠断言)<ul>
+<li>Error 暴露的越晚，越难调试</li>
+<li>追溯导致 assert failure 的变量值 (slice) 通常可以快速定位到 bug</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="例子：维护父亲节点的平衡树"><a href="#例子：维护父亲节点的平衡树" class="headerlink" title="例子：维护父亲节点的平衡树"></a>例子：维护父亲节点的平衡树</h2><p><img src="http://web.cecs.pdx.edu/~sheard/course/Cs163/Graphics/rotation.png" alt="img" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="http://web.cecs.pdx.edu/~sheard/course/Cs163/Graphics/rotation.png" class="lozad post-image"></p>
+<pre class="highlight"><span class="line">// 结构约束</span><br><span class="line">assert(u-&gt;parent == u ||</span><br><span class="line">       u-&gt;parent-&gt;left  == u ||</span><br><span class="line">       u-&gt;parent-&gt;right == u);</span><br><span class="line">assert(!u-&gt;left  || u-&gt;left-&gt;parent  == u);</span><br><span class="line">assert(!u-&gt;right || u-&gt;right-&gt;parent == u);</span><br><span class="line"></span><br><span class="line">// 数值约束</span><br><span class="line">assert(!u-&gt;left  || u-&gt;left-&gt;val  &lt; u-&gt;val);</span><br><span class="line">assert(!u-&gt;right || u-&gt;right-&gt;val &gt; u-&gt;val);</span><br></pre>
+
+
+
+
+
+<p><img  srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230728005232.png" class="lozad post-image"src="https://picfloor-1310641479.cos-website.ap-shanghai.myqcloud.com/picfloor/20230728005232.png"></p>
+<h2 id="福利：更多的断言"><a href="#福利：更多的断言" class="headerlink" title="福利：更多的断言"></a>福利：更多的断言</h2><p>你是否希望在每一次指针访问时，都增加一个断言</p>
+<ul>
+<li><code>assert(obj-&gt;low &lt;= ptr &amp;&amp; ptr &lt; obj-&gt;high);</code></li>
+</ul>
+<pre class="highlight"><span class="line">int *ref(int *a, int i) &#123;</span><br><span class="line">  return &amp;a[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void foo() &#123;</span><br><span class="line">  int arr[64];</span><br><span class="line">  *ref(arr, 64) = 1; // bug</span><br><span class="line">&#125;</span><br></pre>
+
+<hr>
+<p>一个神奇的编译选项</p>
+<ul>
+<li>&#96;&#96;&#96;<br>-fsanitize&#x3D;address<pre class="highlight"><span class="line"></span><br><span class="line">  - Address Sanitizer; asan “动态程序分析”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 同步 (Synchronization)</span><br><span class="line"></span><br><span class="line">两个或两个以上随时间变化的量在变化过程中保持一定的相对关系</span><br><span class="line"></span><br><span class="line">- 同步电路 (一个时钟控制所有触发器)</span><br><span class="line">- iPhone/iCloud 同步 (手机 vs 电脑 vs 云端)</span><br><span class="line">- 变速箱同步器 (合并快慢速齿轮)</span><br><span class="line">- 同步电机 (转子与磁场转速一致)</span><br><span class="line">- 同步电路 (所有触发器在边沿同时触发)</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">异步 (Asynchronous) = 不需要同步</span><br><span class="line"></span><br><span class="line">- 上述很多例子都有异步版本 (异步电机、异步电路、异步线程)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 并发程序中的同步</span><br><span class="line"></span><br><span class="line">并发程序的步调很难保持 “完全一致”</span><br><span class="line"></span><br><span class="line">- 线程同步：在某个时间点共同达到互相已知的状态</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">再次把线程想象成我们自己</span><br><span class="line"></span><br><span class="line">- NPY：等我洗个头就出门/等我打完这局游戏就来</span><br><span class="line">- 舍友：等我修好这个 bug 就吃饭</span><br><span class="line">- 导师：等我出差回来就讨论这个课题</span><br><span class="line">- jyy:等我成为卷王就躺平</span><br><span class="line">  - “先到先等”，在条件达成的瞬间再次恢复并行</span><br><span class="line">  - 同时开始出去玩/吃饭/讨论</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 生产者-消费者问题：学废你就赢了</span><br><span class="line"></span><br><span class="line">&gt; 99% 的实际并发问题都可以用生产者-消费者解决。</span><br><span class="line"></span><br></pre>
+void Tproduce() { while (1) printf(“(“); }<br>void Tconsume() { while (1) printf(“)”); }<pre class="highlight"><span class="line"></span><br><span class="line">在 `printf` 前后增加代码，使得打印的括号序列满足</span><br><span class="line"></span><br><span class="line">- 一定是某个合法括号序列的前缀</span><br><span class="line">- 括号嵌套的深度不超过*n*</span><br><span class="line">  - *n*=3, `((())())(((` 合法</span><br><span class="line">  - *n*=3, `(((())))`, `(()))` 不合法</span><br><span class="line">- 生产者-消费者问题中的同步</span><br><span class="line">  - Tproduce: 等到有空位时才能打印左括号</span><br><span class="line">  - Tconsume: 等到有多余的左括号时才能打印右括号</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 计算图、调度器和生产者-消费者问题</span><br><span class="line"></span><br><span class="line">为什么叫 “生产者-消费者” 而不是 “括号问题”？</span><br><span class="line"></span><br><span class="line">- 左括号：生产资源 (任务)、放入队列</span><br><span class="line">- 右括号：从队列取出资源 (任务) 执行</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">并行计算基础：计算图</span><br><span class="line"></span><br><span class="line">- 计算任务构成有向无环图</span><br><span class="line">  - (*u*,*v*)∈*E* 表示 *v* 要用到前 *u* 的值</span><br><span class="line">- 只要调度器 (生产者) 分配任务效率够高，算法就能并行</span><br><span class="line">  - 生产者把任务放入队列中</span><br><span class="line">  - 消费者 (workers) 从队列中取出任务</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 生产者-消费者：实现</span><br><span class="line"></span><br><span class="line">能否用互斥锁实现括号问题？</span><br><span class="line"></span><br><span class="line">- 左括号：嵌套深度 (队列) 不足 �*n* 时才能打印</span><br><span class="line"></span><br><span class="line">- 右括号：嵌套深度 (队列)&gt;1时才能打印</span><br><span class="line"></span><br><span class="line">  - 当然是等到满足条件时再打印了</span><br><span class="line"></span><br><span class="line">    (代码演示)</span><br><span class="line"></span><br><span class="line">    - 用互斥锁保持条件成立</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 压力测试 + 观察输出结果</span><br><span class="line">- 自动观察输出结果：[pc-check.py](https://jyywiki.cn/pages/OS/2023/c/pc-check.py)</span><br><span class="line">- 未来：copilot 观察输出结果，并给出修复建议</span><br><span class="line">- 更远的未来：~~我们都不需要不存在了~~</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 同步问题：分析</span><br><span class="line"></span><br><span class="line">&gt; 线程同步由条件不成立等待和同步条件达成继续构成</span><br><span class="line"></span><br><span class="line">线程 join</span><br><span class="line"></span><br><span class="line">- Tmain 同步条件：`nexit == T`</span><br><span class="line">- Tmain 达成同步：最后一个线程退出 `nexit++`</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">生产者/消费者问题</span><br><span class="line"></span><br><span class="line">- Tproduce 同步条件：`CAN_PRODUCE (count &lt; n)`</span><br><span class="line">- Tproduce 达成同步：Tconsume `count--`</span><br><span class="line">- Tconsume 同步条件：`CAN_CONSUME (count &gt; 0)`</span><br><span class="line">- Tconsume 达成同步：Tproduce `count++`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 理想中的同步 API</span><br><span class="line"></span><br></pre>
+wait_until(CAN_PRODUCE) {<br>count++;<br>printf(“(“);<br>}</li>
+</ul>
+<p>wait_until(CAN_CONSUME) {<br>  count–;<br>  printf(“)”);<br>}</p>
+<pre class="highlight"><span class="line"></span><br><span class="line">若干实现上的难题</span><br><span class="line"></span><br><span class="line">- 正确性</span><br><span class="line">  - 大括号内代码执行时，其他线程不得破坏等待的条件</span><br><span class="line">- 性能</span><br><span class="line">  - 不能 spin check 条件达成</span><br><span class="line">  - 已经在等待的线程怎么知道条件被满足？</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 条件变量：理想与实现之间的折衷</span><br><span class="line"></span><br><span class="line">一把互斥锁 + 一个 “条件变量” + 手工唤醒</span><br><span class="line"></span><br><span class="line">- wait(cv, mutex) 💤</span><br><span class="line">  - 调用时必须保证已经获得 mutex</span><br><span class="line">  - wait 释放 mutex、进入睡眠状态</span><br><span class="line">  - 被唤醒后需要重新执行 lock(mutex)</span><br><span class="line">- signal/notify(cv) 💬</span><br><span class="line">  - 随机私信一个等待者：醒醒</span><br><span class="line">  - 如果有线程正在等待 cv，则唤醒其中一个线程</span><br><span class="line">- broadcast/notifyAll(cv) 📣</span><br><span class="line">  - 叫醒所有人</span><br><span class="line">  - 唤醒全部正在等待 cv 的线程</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 条件变量：实现生产者-消费者</span><br><span class="line"></span><br></pre>
+<p>void Tproduce() {<br>  mutex_lock(&amp;lk);<br>  if (!CAN_PRODUCE) cond_wait(&amp;cv, &amp;lk);<br>  printf(“(“); count++; cond_signal(&amp;cv);<br>  mutex_unlock(&amp;lk);<br>}</p>
+<p>void Tconsume() {<br>  mutex_lock(&amp;lk);<br>  if (!CAN_CONSUME) cond_wait(&amp;cv, &amp;lk);<br>  printf(“)”); count–; cond_signal(&amp;cv);<br>  mutex_unlock(&amp;lk);<br>}</p>
+<pre class="highlight"><span class="line"></span><br><span class="line">代码演示 &amp; 压力测试 &amp; 模型检验</span><br><span class="line"></span><br><span class="line">- (Small scope hypothesis)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">producer和consumer一多，测试就不通过，为什么？</span><br><span class="line"></span><br><span class="line">唤醒的时候没有重新检查条件变量，而是直接打印括号</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">正确样例</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```C</span><br><span class="line">#include &quot;thread.h&quot;</span><br><span class="line">#include &quot;thread-sync.h&quot;</span><br><span class="line"></span><br><span class="line">int n, count = 0;</span><br><span class="line">mutex_t lk = MUTEX_INIT();</span><br><span class="line">cond_t cv = COND_INIT();</span><br><span class="line"> </span><br><span class="line">#define CAN_PRODUCE (count &lt; n)</span><br><span class="line">#define CAN_CONSUME (count &gt; 0)</span><br><span class="line"></span><br><span class="line">void Tproduce() &#123;</span><br><span class="line">  while (1) &#123;</span><br><span class="line">    mutex_lock(&amp;lk);</span><br><span class="line">    while (!CAN_PRODUCE) &#123;</span><br><span class="line">      cond_wait(&amp;cv, &amp;lk);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;(&quot;); count++;</span><br><span class="line">    cond_broadcast(&amp;cv);</span><br><span class="line">    mutex_unlock(&amp;lk);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Tconsume() &#123;</span><br><span class="line">  while (1) &#123;</span><br><span class="line">    mutex_lock(&amp;lk);</span><br><span class="line">    while (!CAN_CONSUME) &#123;</span><br><span class="line">      cond_wait(&amp;cv, &amp;lk);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;)&quot;); count--;</span><br><span class="line">    cond_broadcast(&amp;cv);</span><br><span class="line">    mutex_unlock(&amp;lk);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">  assert(argc == 3);</span><br><span class="line">  n = atoi(argv[1]);</span><br><span class="line">  int T = atoi(argv[2]);</span><br><span class="line">  setbuf(stdout, NULL);</span><br><span class="line">  for (int i = 0; i &lt; T; i++) &#123;</span><br><span class="line">    create(Tproduce);</span><br><span class="line">    create(Tconsume);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<blockquote>
+<p>编写正确的并发程序并非易事，即便是资深的系统程序员 (包括 Linux 内核开发者) 都无法避免在代码中引入并发 bug。压力测试、模型检验都是帮助我们提升对并发程序正确性信心的手段。除此之外，防御性地编程 (例如写出尽可能简单、正确性明了的代码) 也是至关重要的。</p>
+</blockquote>
+<h2 id="条件变量：万能并行计算框架-M2"><a href="#条件变量：万能并行计算框架-M2" class="headerlink" title="条件变量：万能并行计算框架 (M2)"></a>条件变量：万能并行计算框架 (M2)</h2><pre class="highlight"><span class="line">struct work &#123;</span><br><span class="line">  void (*run)(void *arg);</span><br><span class="line">  void *arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Tworker() &#123;</span><br><span class="line">  while (1) &#123;</span><br><span class="line">    struct work *work;</span><br><span class="line">    wait_until(has_new_work() || all_done) &#123;</span><br><span class="line">      work = get_work();</span><br><span class="line">    &#125;</span><br><span class="line">    if (!work) break;</span><br><span class="line">    else &#123;</span><br><span class="line">      work-&gt;run(work-&gt;arg); // 允许生成新的 work (注意互斥)</span><br><span class="line">      release(work);  // 注意回收 work 分配的资源</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+
+
+<h2 id="条件变量：更古怪的习题-x2F-面试题"><a href="#条件变量：更古怪的习题-x2F-面试题" class="headerlink" title="条件变量：更古怪的习题&#x2F;面试题"></a>条件变量：更古怪的习题&#x2F;面试题</h2><p>有三种线程</p>
+<ul>
+<li>Ta 若干: 死循环打印 <code>&lt;</code></li>
+<li>Tb 若干: 死循环打印 <code>&gt;</code></li>
+<li>Tc 若干: 死循环打印 <code>_</code></li>
+</ul>
+<p>任务：</p>
+<ul>
+<li>对这些线程进行同步，使得屏幕打印出 <code>&lt;&gt;&lt;_</code> 和 <code>&gt;&lt;&gt;_</code> 的组合</li>
+</ul>
+<hr>
+<p>使用条件变量，只要回答三个问题：</p>
+<ul>
+<li>打印 “<code>&lt;</code>” 的条件？</li>
+<li>打印 “<code>&gt;</code>” 的条件？</li>
+<li>打印 “<code>_</code>” 的条件？</li>
+</ul>
+<p>源码</p>
+<pre class="highlight"><span class="line">#include &quot;thread.h&quot;</span><br><span class="line">#include &quot;thread-sync.h&quot;</span><br><span class="line"></span><br><span class="line">#define LENGTH(arr) (sizeof(arr) / sizeof(arr[0]))</span><br><span class="line"></span><br><span class="line">enum &#123; A = 1, B, C, D, E, F, &#125;;</span><br><span class="line"></span><br><span class="line">struct rule &#123;</span><br><span class="line">  int from, ch, to;</span><br><span class="line">&#125; rules[] = &#123;</span><br><span class="line">  &#123; A, &#x27;&lt;&#x27;, B &#125;,</span><br><span class="line">  &#123; B, &#x27;&gt;&#x27;, C &#125;,</span><br><span class="line">  &#123; C, &#x27;&lt;&#x27;, D &#125;,</span><br><span class="line">  &#123; A, &#x27;&gt;&#x27;, E &#125;,</span><br><span class="line">  &#123; E, &#x27;&lt;&#x27;, F &#125;,</span><br><span class="line">  &#123; F, &#x27;&gt;&#x27;, D &#125;,</span><br><span class="line">  &#123; D, &#x27;_&#x27;, A &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">int current = A, quota = 1;</span><br><span class="line"></span><br><span class="line">mutex_t lk = MUTEX_INIT();</span><br><span class="line">cond_t cv = COND_INIT();</span><br><span class="line"></span><br><span class="line">int next(char ch) &#123;</span><br><span class="line">  for (int i = 0; i &lt; LENGTH(rules); i++) &#123;</span><br><span class="line">    struct rule *rule = &amp;rules[i];</span><br><span class="line">    if (rule-&gt;from == current &amp;&amp; rule-&gt;ch == ch) &#123;</span><br><span class="line">      return rule-&gt;to;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static int can_print(char ch) &#123;</span><br><span class="line">    return next(ch) != 0 &amp;&amp; quota &gt; 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void fish_before(char ch) &#123;</span><br><span class="line">  mutex_lock(&amp;lk);</span><br><span class="line">  while (!can_print(ch)) &#123;</span><br><span class="line">    // can proceed only if (next(ch) &amp;&amp; quota)</span><br><span class="line">    cond_wait(&amp;cv, &amp;lk);</span><br><span class="line">  &#125;</span><br><span class="line">  quota--;</span><br><span class="line">  mutex_unlock(&amp;lk);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void fish_after(char ch) &#123;</span><br><span class="line">  mutex_lock(&amp;lk);</span><br><span class="line">  quota++;</span><br><span class="line">  current = next(ch);</span><br><span class="line">  assert(current);</span><br><span class="line">  cond_broadcast(&amp;cv);</span><br><span class="line">  mutex_unlock(&amp;lk);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const char roles[] = &quot;.&lt;&lt;&lt;&lt;&lt;&gt;&gt;&gt;&gt;___&quot;;</span><br><span class="line"></span><br><span class="line">void fish_thread(int id) &#123;</span><br><span class="line">  char role = roles[id];</span><br><span class="line">  while (1) &#123;</span><br><span class="line">    fish_before(role);</span><br><span class="line">    putchar(role);  // Not lock-protected</span><br><span class="line">    fish_after(role);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">  setbuf(stdout, NULL);</span><br><span class="line">  for (int i = 0; i &lt; strlen(roles); i++)</span><br><span class="line">    create(fish_thread);</span><br><span class="line">&#125;</span><br></pre>
+
+
+
+<p>同步的本质是线程需要等待某件它所预期的事件发生，而事件的发生总是可以用共享状态的条件来表达。并且在这个条件被满足的前提下完成一些动作：</p>
+<pre class="highlight"><span class="line">WAIT_UNTIL(cond) with (mutex) &#123;</span><br><span class="line">  // cond 在此时成立</span><br><span class="line">  work();</span><br><span class="line">&#125;</span><br></pre>
+
+<p>计算机系统的设计者提供了条件变量的机制模仿这个过程，它与互斥锁联合使用：</p>
+<ul>
+<li><code>cond_wait(cv, lk)</code> 释放互斥锁 <code>lk</code> 并进入睡眠状态。注意被唤醒时，<code>cond_wait</code> 会重新试图获得互斥，直到获得互斥锁后才能返回。</li>
+<li><code>cond_signal(cv)</code> 唤醒一个在 <code>cv</code> 上等待的线程</li>
+<li><code>cond_broadcast(cv)</code> 唤醒所有在 <code>cv</code> 上等待的线程</li>
+</ul>
+<p>我们也很自然地可以用 wait + broadcast 实现 <code>WAIT_UNTIL</code>，从而实现线程之间的同步。</p>
+
+  </div>
+  <div>
+    
+      <div 
+        class="post-note note-warning copyright" 
+        style="margin-top: 42px">
+        <p>
+          <span style="font-weight: bold;">作者：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="/about">
+            JKLASDWD
+          </a>
+        </p>
+        <p>
+          <span style="font-weight: bold;">文章链接：</span><a 
+            target="_blank" 
+            rel="nofollow noopener noreferrer" 
+            href="https://github.com/JKLASDWD/JKLASDWD.github.io/2023/07/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+            https://github.com/JKLASDWD/JKLASDWD.github.io/2023/07/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/
+          </a>
+        </p>
+        <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
+      </div>
+    
+  </div>
+</article>
+<div class="nav">
+  
+  
+    <div class="nav-item-next">
+      <a 
+        href="/2023/05/24/Ubuntu%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6%E5%88%B0Onedrive/" 
+        class="nav-link">
+        <div>
+          <div class="nav-label">Next</div>
+          
+            <div class="nav-title">Ubuntu同步文件到Onedrive </div>
+          
+        </div>
+        <i class="iconfont icon-right nav-next-icon"></i>
+      </a>
+    </div>
+  
+</div>
+
+<div 
+  class="card card-content toc-card" 
+  id="mobiletoc">
+  <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>TOC
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="toc-text">汇编代码的状态机模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95-C-%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%E6%A8%A1%E5%9E%8B-%E8%AF%AD%E4%B9%89"><span class="toc-text">简单 C 程序的状态机模型 (语义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Python%E4%B8%AD%E6%A8%A1%E6%8B%9F%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C"><span class="toc-text">在Python中模拟多线程、多进程操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83"><span class="toc-text">5. 多处理器编程：从入门到放弃</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E5%87%BA%E6%9B%B4%E5%A4%9A%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">问出更多的问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E9%9A%90%E5%90%AB%E5%81%87%E8%AE%BE"><span class="toc-text">状态机的隐含假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A%E6%B1%82%E5%92%8C"><span class="toc-text">例子：求和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BE%E5%BC%83-1-%EF%BC%9A%E6%8C%87%E4%BB%A4-x2F-%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%8E%9F%E5%AD%90%E6%80%A7%E5%81%87%E8%AE%BE"><span class="toc-text">放弃 (1)：指令&#x2F;代码执行原子性假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BE%E5%BC%83%E5%8E%9F%E5%AD%90%E6%80%A7%E5%81%87%E8%AE%BE%E7%9A%84%E5%90%8E%E6%9E%9C"><span class="toc-text">放弃原子性假设的后果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A%E6%B1%82%E5%92%8C-%E5%86%8D%E6%AC%A1%E5%87%BA%E7%8E%B0"><span class="toc-text">例子：求和 (再次出现)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BE%E5%BC%83-2-%EF%BC%9A%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%81%87%E8%AE%BE"><span class="toc-text">放弃 (2)：程序的顺序执行假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E8%AF%81%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-text">保证执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%B1%82%E5%92%8C"><span class="toc-text">实现正确的求和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%97%AE%E9%A2%98%EF%BC%9A%E5%AE%9A%E4%B9%89"><span class="toc-text">互斥问题：定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%97%AE%E9%A2%98%E7%9A%84%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95"><span class="toc-text">互斥问题的经典算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%81%87%E8%AE%BE"><span class="toc-text">实现互斥的基本假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Atomic-Exchange-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Atomic Exchange 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%EF%BC%9A%E5%81%9A%E9%A2%98%E5%AE%B6-v-s-%E7%A7%91%E5%AD%A6%E5%AE%B6"><span class="toc-text">实现互斥：做题家 v.s. 科学家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%EF%BC%9A%E8%87%AA%E6%97%8B%E9%94%81"><span class="toc-text">实现互斥：自旋锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%EF%BC%9A%E8%87%AA%E6%97%8B%E9%94%81-1"><span class="toc-text">实现互斥：自旋锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%BC%BA%E5%A4%A7%E7%9A%84%E5%8E%9F%E5%AD%90%E6%8C%87%E4%BB%A4"><span class="toc-text">更强大的原子指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%87%BA%E7%9A%84-Compare-%E7%94%A8%E5%A4%84"><span class="toc-text">多出的 Compare: 用处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E6%97%8B%E9%94%81%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-text">自旋锁的缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scalability-%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B0%E7%BB%B4%E5%BA%A6"><span class="toc-text">Scalability: 性能的新维度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E6%97%8B%E9%94%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">自旋锁的使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B-%E9%95%BF%E4%B8%B4%E7%95%8C%E5%8C%BA%E7%9A%84%E4%BA%92%E6%96%A5"><span class="toc-text">实现线程 + 长临界区的互斥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B-%E9%95%BF%E4%B8%B4%E7%95%8C%E5%8C%BA%E7%9A%84%E4%BA%92%E6%96%A5-cont%E2%80%99d"><span class="toc-text">实现线程 + 长临界区的互斥 (cont’d)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E4%BA%92%E6%96%A5%E7%9A%84%E4%B8%80%E4%BA%9B%E5%88%86%E6%9E%90"><span class="toc-text">关于互斥的一些分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E8%B0%83%E8%AF%95%E4%B9%8B%E5%89%8D"><span class="toc-text">开始调试之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E5%9B%B0%E9%9A%BE%E7%9A%84%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0"><span class="toc-text">调试困难的根本原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA"><span class="toc-text">调试理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA-cont%E2%80%99d"><span class="toc-text">调试理论 (cont’d)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E4%BB%AC%E6%98%AF%E5%90%A6%E9%81%87%E5%88%B0%E8%BF%87%E4%BB%A5%E4%B8%8B%E4%BB%A4%E4%BA%BA%E6%8A%93%E7%8B%82%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%9F"><span class="toc-text">你们是否遇到过以下令人抓狂的情况？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%96%E7%95%8C%EF%BC%9A%E4%B8%80%E5%88%87%E7%9A%86%E5%8F%AF%E8%B0%83%E8%AF%95"><span class="toc-text">计算机世界：一切皆可调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA"><span class="toc-text">使用调试理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GDB-%E5%85%A5%E9%97%A8"><span class="toc-text">GDB: 入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA%EF%BC%9A%E5%BA%94%E7%94%A8-Again"><span class="toc-text">调试理论：应用 (Again)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E5%9F%BA%E6%9C%AC%E5%87%86%E5%88%99%EF%BC%9A%E5%9B%9E%E9%A1%BE"><span class="toc-text">编程基本准则：回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA%E7%9A%84%E6%9C%80%E9%87%8D%E8%A6%81%E5%BA%94%E7%94%A8"><span class="toc-text">调试理论的最重要应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A%E7%BB%B4%E6%8A%A4%E7%88%B6%E4%BA%B2%E8%8A%82%E7%82%B9%E7%9A%84%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="toc-text">例子：维护父亲节点的平衡树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%8F%E5%88%A9%EF%BC%9A%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%96%AD%E8%A8%80"><span class="toc-text">福利：更多的断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%EF%BC%9A%E4%B8%87%E8%83%BD%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6-M2"><span class="toc-text">条件变量：万能并行计算框架 (M2)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%EF%BC%9A%E6%9B%B4%E5%8F%A4%E6%80%AA%E7%9A%84%E4%B9%A0%E9%A2%98-x2F-%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">条件变量：更古怪的习题&#x2F;面试题</span></a>
+</div>
+            </main>
+            <aside class="right-column">
+              <div class="sticky-widescreen">
+  
+  
+    <article class="card card-content toc-card">
+      <div class="toc-header">
+  <i 
+    class="iconfont icon-menu" 
+    style="padding-right: 2px;">
+  </i>TOC
+</div>
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="toc-text">汇编代码的状态机模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95-C-%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%8A%B6%E6%80%81%E6%9C%BA%E6%A8%A1%E5%9E%8B-%E8%AF%AD%E4%B9%89"><span class="toc-text">简单 C 程序的状态机模型 (语义)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Python%E4%B8%AD%E6%A8%A1%E6%8B%9F%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C"><span class="toc-text">在Python中模拟多线程、多进程操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%BC%96%E7%A8%8B%EF%BC%9A%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83"><span class="toc-text">5. 多处理器编程：从入门到放弃</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E5%87%BA%E6%9B%B4%E5%A4%9A%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">问出更多的问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%9C%BA%E7%9A%84%E9%9A%90%E5%90%AB%E5%81%87%E8%AE%BE"><span class="toc-text">状态机的隐含假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A%E6%B1%82%E5%92%8C"><span class="toc-text">例子：求和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BE%E5%BC%83-1-%EF%BC%9A%E6%8C%87%E4%BB%A4-x2F-%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%8E%9F%E5%AD%90%E6%80%A7%E5%81%87%E8%AE%BE"><span class="toc-text">放弃 (1)：指令&#x2F;代码执行原子性假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BE%E5%BC%83%E5%8E%9F%E5%AD%90%E6%80%A7%E5%81%87%E8%AE%BE%E7%9A%84%E5%90%8E%E6%9E%9C"><span class="toc-text">放弃原子性假设的后果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A%E6%B1%82%E5%92%8C-%E5%86%8D%E6%AC%A1%E5%87%BA%E7%8E%B0"><span class="toc-text">例子：求和 (再次出现)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BE%E5%BC%83-2-%EF%BC%9A%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%81%87%E8%AE%BE"><span class="toc-text">放弃 (2)：程序的顺序执行假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E8%AF%81%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-text">保证执行顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%B1%82%E5%92%8C"><span class="toc-text">实现正确的求和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%97%AE%E9%A2%98%EF%BC%9A%E5%AE%9A%E4%B9%89"><span class="toc-text">互斥问题：定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%97%AE%E9%A2%98%E7%9A%84%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95"><span class="toc-text">互斥问题的经典算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%81%87%E8%AE%BE"><span class="toc-text">实现互斥的基本假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Atomic-Exchange-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Atomic Exchange 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%EF%BC%9A%E5%81%9A%E9%A2%98%E5%AE%B6-v-s-%E7%A7%91%E5%AD%A6%E5%AE%B6"><span class="toc-text">实现互斥：做题家 v.s. 科学家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%EF%BC%9A%E8%87%AA%E6%97%8B%E9%94%81"><span class="toc-text">实现互斥：自旋锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%92%E6%96%A5%EF%BC%9A%E8%87%AA%E6%97%8B%E9%94%81-1"><span class="toc-text">实现互斥：自旋锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%BC%BA%E5%A4%A7%E7%9A%84%E5%8E%9F%E5%AD%90%E6%8C%87%E4%BB%A4"><span class="toc-text">更强大的原子指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%87%BA%E7%9A%84-Compare-%E7%94%A8%E5%A4%84"><span class="toc-text">多出的 Compare: 用处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E6%97%8B%E9%94%81%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-text">自旋锁的缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scalability-%E6%80%A7%E8%83%BD%E7%9A%84%E6%96%B0%E7%BB%B4%E5%BA%A6"><span class="toc-text">Scalability: 性能的新维度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E6%97%8B%E9%94%81%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">自旋锁的使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B-%E9%95%BF%E4%B8%B4%E7%95%8C%E5%8C%BA%E7%9A%84%E4%BA%92%E6%96%A5"><span class="toc-text">实现线程 + 长临界区的互斥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B-%E9%95%BF%E4%B8%B4%E7%95%8C%E5%8C%BA%E7%9A%84%E4%BA%92%E6%96%A5-cont%E2%80%99d"><span class="toc-text">实现线程 + 长临界区的互斥 (cont’d)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E4%BA%92%E6%96%A5%E7%9A%84%E4%B8%80%E4%BA%9B%E5%88%86%E6%9E%90"><span class="toc-text">关于互斥的一些分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E8%B0%83%E8%AF%95%E4%B9%8B%E5%89%8D"><span class="toc-text">开始调试之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E5%9B%B0%E9%9A%BE%E7%9A%84%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0"><span class="toc-text">调试困难的根本原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA"><span class="toc-text">调试理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA-cont%E2%80%99d"><span class="toc-text">调试理论 (cont’d)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E4%BB%AC%E6%98%AF%E5%90%A6%E9%81%87%E5%88%B0%E8%BF%87%E4%BB%A5%E4%B8%8B%E4%BB%A4%E4%BA%BA%E6%8A%93%E7%8B%82%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%9F"><span class="toc-text">你们是否遇到过以下令人抓狂的情况？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%96%E7%95%8C%EF%BC%9A%E4%B8%80%E5%88%87%E7%9A%86%E5%8F%AF%E8%B0%83%E8%AF%95"><span class="toc-text">计算机世界：一切皆可调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA"><span class="toc-text">使用调试理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GDB-%E5%85%A5%E9%97%A8"><span class="toc-text">GDB: 入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA%EF%BC%9A%E5%BA%94%E7%94%A8-Again"><span class="toc-text">调试理论：应用 (Again)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E5%9F%BA%E6%9C%AC%E5%87%86%E5%88%99%EF%BC%9A%E5%9B%9E%E9%A1%BE"><span class="toc-text">编程基本准则：回顾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E7%90%86%E8%AE%BA%E7%9A%84%E6%9C%80%E9%87%8D%E8%A6%81%E5%BA%94%E7%94%A8"><span class="toc-text">调试理论的最重要应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A%E7%BB%B4%E6%8A%A4%E7%88%B6%E4%BA%B2%E8%8A%82%E7%82%B9%E7%9A%84%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="toc-text">例子：维护父亲节点的平衡树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%8F%E5%88%A9%EF%BC%9A%E6%9B%B4%E5%A4%9A%E7%9A%84%E6%96%AD%E8%A8%80"><span class="toc-text">福利：更多的断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%EF%BC%9A%E4%B8%87%E8%83%BD%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E6%A1%86%E6%9E%B6-M2"><span class="toc-text">条件变量：万能并行计算框架 (M2)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F%EF%BC%9A%E6%9B%B4%E5%8F%A4%E6%80%AA%E7%9A%84%E4%B9%A0%E9%A2%98-x2F-%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-text">条件变量：更古怪的习题&#x2F;面试题</span></a>
+    </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header">
+    <i 
+      class="iconfont icon-wenzhang_huaban" 
+      style="padding-right: 2px;">
+    </i>Recent Posts
+  </div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-07-29</div>
+        <a href="/2023/07/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><div class="recent-posts-item-content">操作系统</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2023-05-24</div>
+        <a href="/2023/05/24/Ubuntu%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6%E5%88%B0Onedrive/"><div class="recent-posts-item-content">Ubuntu同步文件到Onedrive</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-11-22</div>
+        <a href="/2022/11/22/dfs-2/"><div class="recent-posts-item-content">dfs_2</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-11-16</div>
+        <a href="/2022/11/16/DFS-map/"><div class="recent-posts-item-content">DFS_map</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>
+          Copyright ©
+          
+            2020
+          
+          
+                - 
+                2023
+          
+        </span>
+        &nbsp;
+        <a 
+          href="/" 
+          class="footer-link">
+          自留地
+        </a>
+      </div>
+    </div>
+
+    
+      <div class="footer-dsc">
+        
+          Powered by
+          <a 
+            href="https://hexo.io/" 
+            class="footer-link" 
+            target="_blank" 
+            rel="nofollow noopener noreferrer">
+            &nbsp;Hexo
+          </a>
+        
+        
+          <span>&nbsp;|&nbsp;</span>
+        
+        
+          Theme -
+          <a 
+            href="https://github.com/theme-kaze" 
+            class="footer-link" 
+            target="_blank"
+            rel="nofollow noopener noreferrer">
+            &nbsp;Kaze
+          </a>
+        
+      </div>
+    
+    
+    
+    
+</footer>
+ 
+    
+  <a 
+    role="button" 
+    id="scrollbutton" 
+    class="basebutton" 
+    aria-label="回到顶部">
+    <i class="iconfont icon-arrowleft button-icon"></i>
+  </a>
+
+<a 
+  role="button" 
+  id="menubutton"
+  aria-label="menu button"
+  class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="popbutton" 
+  class="basebutton" 
+  aria-label="控制中心">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="darkbutton" 
+  class="basebutton darkwidget" 
+  aria-label="夜色模式">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+<a 
+  role="button" 
+  id="searchbutton" 
+  class="basebutton searchwidget" 
+  aria-label="搜索">
+  <i class="iconfont icon-search button-icon"></i>
+</a> 
+     
+     
+     
+      <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img')
+    var i
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a')
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'))
+      wrapper.setAttribute('aria-label', 'illustration')
+      wrapper.style.cssText =
+        'width: 100%; display: flex; justify-content: center;'
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt
+      wrapper.dataset.nolink = true
+      img[i].before(wrapper)
+      wrapper.append(img[i])
+      var divWrap = document.createElement('div')
+      divWrap.classList.add('gallery')
+      wrapper.before(divWrap)
+      divWrap.append(wrapper)
+    }
+    baguetteBox.run('.gallery')
+  }
+</script>
+<script>
+  loadScript(
+    "/js/lib/lightbox/baguetteBox.min.js",
+    addImgLayout
+  )
+</script>
+ 
+     
+     
+    <script src="/js/main.js"></script> 
+     
+    
+      <script>
+        var addLazyload = function () {
+          var observer = lozad('.lozad', {
+            load: function (el) {
+              el.srcset = el.getAttribute('data-src')
+            },
+            loaded: function (el) {
+              el.classList.add('loaded')
+            },
+          })
+          observer.observe()
+        }
+      </script>
+      <script>
+        loadScript('/js/lib/lozad.min.js', addLazyload)
+      </script>
+    
+    <script src="//instant.page/5.1.0" type="module"
+      integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+    
+    
+  </body>
+</html>
